@@ -26,10 +26,10 @@ function Navigation({ isLoaded }){
   return (
     <div className="home-signup-login-nav">
         <div className="logo-home">
-            <NavLink className="nav-link-path" exact to="/">Nightmarebnb</NavLink>
+            <NavLink className="nav-link-path" id="nightmarebnb-nav-link" exact to="/">nightmarebnb</NavLink>
 
         </div>
-        
+
         {isLoaded && sessionLinks}
     </div>
   );
