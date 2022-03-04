@@ -30,6 +30,9 @@ function LoginFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <label className="welcome-line">
+          Welcome to Nightmarebnb
+      </label>
       <label>
        Email/Username
         <input
