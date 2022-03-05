@@ -1,0 +1,16 @@
+.black-box-bg {
+    background: black;
+
+
+}
+
+.welcome-blackbox-bg {
+    display: flex;
+    justify-content: center;
+
+}
+
+.scaryhouse-pic {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
