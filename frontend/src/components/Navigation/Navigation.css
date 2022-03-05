@@ -28,7 +28,7 @@
 }
 
 .logo-home {
-    margin-left: 50px;
+    margin-left: 80px;
     width: 10%;
     display: flex;
     justify-content: center;
@@ -39,6 +39,8 @@
 #nightmarebnb-nav-link {
     color: #ff385c;
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: large;
 
 }
 
