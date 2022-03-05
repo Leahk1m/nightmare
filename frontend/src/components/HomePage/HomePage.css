@@ -3,27 +3,44 @@
 .welcome-blackbox-bg {
     display: flex;
     justify-content: center;
-
-
-
 }
 
 .scaryhouse-pic {
     width: 100%;
-    height: 800px;
+    height: 900px;
+    position: absolute;
 }
-
 
 
 .haunting-homes-title {
     display: flex;
     justify-content: center;
     margin-top: 60px;
-    border-bottom: 1px solid black;
-
 
 }
 
 .spooky-stays-title {
 
+}
+
+.banner-text {
+    position: relative;
+    width: 31%;
+    font-size: 18px;
+    margin-left: 5%;
+    color: white;
+    margin-top: 13%;
+}
+
+.welcome-title-home {
+    display: flex;
+    flex-direction: column;
+}
+
+.haunted-home-title {
+    font-weight: 100;
+}
+
+.white-box-bg {
+    margin-top: 550px;
 }
