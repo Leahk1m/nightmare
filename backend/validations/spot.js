@@ -32,4 +32,8 @@ const name = check('name')
 const price = check('price')
     .notEmpty()
     .withMessage('City cannot be empty')
-    .isLength({ min: 5, max: 50 });
+    .isInt();
+const imageUrl = check('imageUrl')
+    .notEmpty()
+    .withMessage('ImageUrl cannot be empty')
+    .isURL({ require_protocol: false, require_host: false });
