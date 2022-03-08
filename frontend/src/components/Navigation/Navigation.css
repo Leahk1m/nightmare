@@ -1,7 +1,5 @@
-
 .home-signup-login-nav {
     display: flex;
-    margin-bottom: 50px;
     width: 100%;
     height: 80px;
     align-items: center;
@@ -16,6 +14,8 @@
 .nav-link-path {
     text-decoration: none;
     font-family:Arial, Helvetica, sans-serif;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
 
 }
 
@@ -27,7 +27,22 @@
 }
 
 .logo-home {
+    margin-left: 80px;
     width: 10%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#nightmarebnb-nav-link {
+    color: #ff385c;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: large;
+
+}
+
+.bat-logo {
+    width: 50%;
 }
