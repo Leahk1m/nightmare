@@ -40,7 +40,7 @@ export const getSpots = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    dispatch(setUser(data.user));
+    dispatch(addSpot(data.spot));
     return response;
   };
 
@@ -50,6 +50,7 @@ const initialState = {};
 
 
 const spotReducer = (state = initialState, action) => {
+    let newSpot;
     switch (action.type) {
         case LOAD_SPOTS:
             const allSpots = {};
@@ -60,9 +61,14 @@ const spotReducer = (state = initialState, action) => {
                 ...allSpots,
                 ...state
             };
-            default:
-                return state;
-    }
+        case ADD_SPOT:
+            newSpot = Object.assign({}, state);
+            newSpot.spot = action.payload;
+            return newSpot;
+
+        default:
+            return state;
+        }
 };
 
 export default spotReducer;
