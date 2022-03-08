@@ -4,7 +4,7 @@ const ADD_SPOT = 'spot/ADDSPOT';
 export const loadSpots = (spots) => {
     return {
         type: LOAD_SPOTS,
-        payload: spots
+        spots
     }
 };
 
@@ -16,7 +16,7 @@ export const addSpot = (spot) => {
 }
 
 export const getSpots = () => async (dispatch) => {
-    const response = await fetch(`/api/spot`);
+    const response = await fetch(`/api/spots`);
 
     if (response.ok) {
       const spots = await response.json();
@@ -46,7 +46,7 @@ export const getSpots = () => async (dispatch) => {
 
 
 
-const initialState = {};
+const initialState = { spot: null };
 
 
 const spotReducer = (state = initialState, action) => {

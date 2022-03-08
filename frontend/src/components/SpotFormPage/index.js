@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
+import * as sessionActions from '../../store/session';
 
 
 function SpotFormPage() {
     const dispatch = useDispatch();
     const spots = useSelector(state => state.spot.spots);
+    const sessionUser = useSelector(state => state.session.user);
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
