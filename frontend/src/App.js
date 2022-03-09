@@ -17,8 +17,8 @@ function App() {
   const spotsData = useSelector(state => state.spot.allSpots)
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(spotActions.getSpots())
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

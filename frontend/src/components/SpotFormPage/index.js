@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
-import * as sessionActions from '../../store/session';
-
+// import * as sessionActions from '../../store/session';
 
 function SpotFormPage() {
     const dispatch = useDispatch();
-    const spots = useSelector(state => state.spot.spots);
-    const sessionUser = useSelector(state => state.session.user);
+    // const spots = useSelector(state => state.spot.spots);
+    // const sessionUser = useSelector(state => state.session.user);
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -17,14 +16,19 @@ function SpotFormPage() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState([]);
+    const imageUrl = 'https://www.codegrepper.com/code-examples/whatever/how+to+hide+button+in+react'
+
+    const userId = useSelector(state => state.session.user.id);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(spotActions.addListing({ address, city, state, country, name, price }))
+        console.log({ userId, address, city, state, country, name, price, imageUrl })
+        return dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
-                if(data && data.errors) setErrors(data.errors);
+                console.log(data)
+                // if(data && data.errors) setErrors(data.errors);
             });
     }
 
@@ -79,7 +83,7 @@ function SpotFormPage() {
             <input
             type="text"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setPrice(+e.target.value)}
             required
             placeholder="Price"
             />

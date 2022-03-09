@@ -10,7 +10,7 @@ function SpotShow({ spotsData }) {
                 <h1 className="showpage-title">Ghost friendly places to stay</h1>
             </div> */}
             {spotsData.map((spot) => (
-                <div className="indiv-spot-container-showpage">
+                <div className="indiv-spot-container-showpage" key={spot.id}>
 
                     <div className="spot-showpage-img-container">
                         <Link to={`/spots/${spot.id}`} key={spot.id}>

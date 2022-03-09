@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { Link } from 'react-router-dom';
+import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -30,6 +32,10 @@ function ProfileButton({ user }) {
 
   return (
     <>
+      <Link className="add-spooky-spot-link"to="/add-spot">
+        Add a New Spooky Spot
+      </Link>
+
       <button onClick={openMenu}>
         <i class="fa-solid fa-ghost"></i>
       </button>
