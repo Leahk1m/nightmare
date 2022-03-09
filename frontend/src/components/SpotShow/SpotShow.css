@@ -1,17 +1,21 @@
 
 .spot-showpage-img {
-    width: 500px;
-    height: 400px;
+    width: 380px;
+    height: 250px;
     margin: 10px;
+    border-radius: 15px;
 }
 
 .spot-showpage-img-container {
     display: flex;
+    margin:10px;
+
 }
 
 .indiv-spot-link {
     color: black;
     text-decoration: none;
+    margin-left: 30px;
 }
 
 .whole-container-showpage-spots {
@@ -19,6 +23,10 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 10px;
+    margin: 20px;
 
+}
+
+.indiv-spot-description-showpage {
+    margin-left: 30px;
 }
