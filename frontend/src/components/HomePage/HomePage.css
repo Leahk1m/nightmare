@@ -32,10 +32,28 @@
     flex-direction: column;
 }
 
-.haunted-home-title {
+.sleep-in-ghost-town-title {
     font-weight: 100;
 }
 
 .white-box-bg {
     margin-top: 550px;
+}
+
+.ghost-town-img {
+    width: 550px;
+    height: 350px;
+    margin: 5px;
+}
+
+.splashpage-more-homes {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ghost-gif-container {
+    background-image: url("https://media.istockphoto.com/vectors/cute-cartoon-ghost-pattern-vector-id487774484?k=20&m=487774484&s=612x612&w=0&h=t5xuMSgE1fG3mWehgrB9TmijuOX_0VRk0KGBlr0FJ4w=");
+    opacity: 1;
 }

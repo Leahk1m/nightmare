@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './SpotShow.css';
 
 
-
 function SpotShow({ spotsData }) {
     return(
         <div className="whole-container-showpage-spots">
