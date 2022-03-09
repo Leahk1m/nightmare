@@ -38,7 +38,7 @@ module.exports = {
         country: 'United States',
         name: 'Victorian Gothic Castle Mansion',
         price: 500,
-        imageUrl: 'https://www.airbnb.com/rooms/16673443/photos/252833012?source_impression_id=p3_1646676815_CHeP4Ct%2FY7Lex88j',
+        imageUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.airbnb.ie%2Frooms%2F16673443&psig=AOvVaw2ou54Yxyk10vBzHNqBPheK&ust=1646877466469000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLjry-b2t_YCFQAAAAAdAAAAABAD',
         createdAt: new Date(),
         updatedAt: new Date(),
 
@@ -164,4 +164,3 @@ module.exports = {
     */
   }
 };
-

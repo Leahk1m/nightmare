@@ -13,5 +13,9 @@ router.get('/', asyncHandler(async(_req, res) => {
     return res.json(spots);
 }))
 
+router.post('/', asyncHandler(async(req, res) => {
+    
+}))
+
 
 module.exports = router;
