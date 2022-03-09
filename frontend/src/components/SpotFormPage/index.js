@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
 // import * as sessionActions from '../../store/session';
 import './SpotForm.css';
@@ -23,10 +23,9 @@ function SpotFormPage() {
 
     const userId = useSelector(state => state.session.user.id);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        console.log({ userId, address, city, state, country, name, price, imageUrl })
         dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
@@ -113,7 +112,7 @@ function SpotFormPage() {
             <div className="preview-container">
                 {
                     imageUrl !== '' ?
-                        <img src={imageUrl}/>
+                        <img src={imageUrl} alt="preview-pic"/>
                     :
                         <img src="https://t3.ftcdn.net/jpg/03/28/29/20/360_F_328292034_Mdjyonyzxawept8Lel3mBAiHwc0xAjpM.jpg" alt="preview-house"/>
 

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SpotShow.css';
-
+import { useDispatch, useSelector } from "react-redux";
+import { getSpots } from '../../store/spot';
 
 function SpotShow({ spotsData }) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSpots())
+
+    }, [])
     return(
         <div className="whole-container-showpage-spots">
             {/* <div className="showpage-title-container">

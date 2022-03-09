@@ -33,6 +33,9 @@ export const getSpots = () => async (dispatch) => {
     const { userId, address, city, state, country, name, price, imageUrl } = spot;
     const response = await csrfFetch('/api/spots', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         userId,
         address,
@@ -45,7 +48,8 @@ export const getSpots = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    dispatch(addSpot(data.spot));
+    console.log(data)
+    await dispatch(addSpot(data.spot));
     return response;
   };
 
@@ -55,7 +59,6 @@ const initialState = { spot: null };
 
 
 const spotReducer = (state = initialState, action) => {
-    let newSpot;
     switch (action.type) {
         case LOAD_SPOTS:
             const allSpots = [];
@@ -70,6 +73,7 @@ const spotReducer = (state = initialState, action) => {
                 ...state
             };
         case ADD_SPOT:
+            let newSpot;
             newSpot = Object.assign({}, state);
             newSpot.spot = action.payload;
             return newSpot;
