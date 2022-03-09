@@ -1,0 +1,24 @@
+
+.spot-showpage-img {
+    width: 500px;
+    height: 400px;
+    margin: 10px;
+}
+
+.spot-showpage-img-container {
+    display: flex;
+}
+
+.indiv-spot-link {
+    color: black;
+    text-decoration: none;
+}
+
+.whole-container-showpage-spots {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+
+}
