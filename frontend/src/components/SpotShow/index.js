@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
-import * as spotActions from '../../store/spot';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function SpotShow() {
-    const { spotId } = useParams();
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(spotActions.getSpots())
 
-    }, [])
-
+function SpotShow({ spotsData }) {
+//    const spotsArr = Object.values(spotsData);
 
     return(
         <div>
+            {spotsData.map((spot) => (
+                <div className="indiv-spot-container-showpage">
+                    <Link to={`/spots/${spot.id}`} key={spot.id}>
+                        {spot.city}
 
+                    </Link>
+
+                </div>
+
+            ))}
         </div>
     );
 

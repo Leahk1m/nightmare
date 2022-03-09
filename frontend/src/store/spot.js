@@ -1,6 +1,7 @@
 const LOAD_SPOTS = 'spot/LOADSPOTS';
 const ADD_SPOT = 'spot/ADDSPOT';
 
+
 export const loadSpots = (spots) => {
     return {
         type: LOAD_SPOTS,
@@ -53,12 +54,15 @@ const spotReducer = (state = initialState, action) => {
     let newSpot;
     switch (action.type) {
         case LOAD_SPOTS:
-            const allSpots = {};
+            const allSpots = [];
+            const objSpots = {};
             action.spots.forEach(spot => {
-                allSpots[spot.id] = spot;
+                allSpots.push(spot);
+                objSpots[spot.id] = spot;
             });
             return {
-                ...allSpots,
+                allSpots,
+                objSpots,
                 ...state
             };
         case ADD_SPOT:
