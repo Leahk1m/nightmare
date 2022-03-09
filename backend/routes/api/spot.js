@@ -7,14 +7,19 @@ const router = express.Router();
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const spotValidations = require('../../validations/spot');
 
 router.get('/', asyncHandler(async(_req, res) => {
     const spots = await Spot.findAll();
     return res.json(spots);
 }))
 
-router.post('/', asyncHandler(async(req, res) => {
-    
+router.post('/', spotValidations.validateCreate, handleValidationErrors, asyncHandler(async(req, res) => {
+    const details = req.body;
+
+    const spot = await Spot.create(details);
+    return res.redirect(`${req.baseUrl}/${spot.id}`);
+
 }))
 
 
