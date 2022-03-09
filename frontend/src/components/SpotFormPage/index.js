@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
+import { Redirect } from 'react-router-dom';
 // import * as sessionActions from '../../store/session';
 import './SpotForm.css';
 
@@ -19,6 +20,7 @@ function SpotFormPage() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
+    const [created, setCreated] = useState(false);
 
 
     const userId = useSelector(state => state.session.user.id);
@@ -26,14 +28,19 @@ function SpotFormPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log(data)
-                // if(data && data.errors) setErrors(data.errors);
-            })
-            .then(history.push('/spots'))
+        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
+            .then(setCreated(true))
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     console.log(data)
+            //     if(data && data.errors) setErrors(data.errors);
+            // })
+
     }
+
+    if(created === true) return (
+        <Redirect to="/spots" />
+    );
 
     return(
         <div className="create-form-container">

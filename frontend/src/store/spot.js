@@ -59,6 +59,7 @@ const initialState = { spot: null };
 
 
 const spotReducer = (state = initialState, action) => {
+    let newSpot;
     switch (action.type) {
         case LOAD_SPOTS:
             const allSpots = [];
@@ -73,7 +74,6 @@ const spotReducer = (state = initialState, action) => {
                 ...state
             };
         case ADD_SPOT:
-            let newSpot;
             newSpot = Object.assign({}, state);
             newSpot.spot = action.payload;
             return newSpot;
