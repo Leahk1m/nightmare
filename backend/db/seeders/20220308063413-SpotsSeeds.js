@@ -18,7 +18,7 @@ module.exports = {
       },
 
       {
-        userId: 4,
+        userId: 5,
         address: '6230 Phantom Dr.',
         city: 'Lava Hot Springs',
         state: 'Idaho',
@@ -45,6 +45,20 @@ module.exports = {
       },
 
       {
+        userId: 5,
+        address: '130 State Lane',
+        city: 'Rocky Mount',
+        state: 'North Carolina',
+        country: 'United States',
+        name: 'Boo and Breakfast',
+        price: 420,
+        imageUrl: 'https://www.pufikhomes.com/wp-content/uploads/2019/04/stylish-swedish-cottage-in-dark-tones-pufikhomes-3.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+
+      {
         userId: 4,
         address: '109 Bowman Dr.',
         city: 'New Orleans',
@@ -60,7 +74,7 @@ module.exports = {
       },
 
       {
-        userId: 4,
+        userId: 5,
         address: '1902 Enslin Ln.',
         city: 'Troy',
         state: 'New York',
@@ -81,7 +95,7 @@ module.exports = {
         country: 'United States',
         name: 'The Manor',
         price: 700,
-        imageUrl: 'https://a0.muscache.com/im/pictures/3413475/09dbaeb6_original.jpg?im_w=1200',
+        imageUrl: 'https://a0.muscache.com/im/pictures/miso/Hosting-10454498/original/537b7b3b-e681-4423-a5c6-a6afb74ebf5b.jpeg?im_w=720',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -94,20 +108,20 @@ module.exports = {
         country: 'United States',
         name: 'The Stone House',
         price: 300,
-        imageUrl: 'https://a0.muscache.com/im/pictures/bb7e9359-09d9-4fae-a233-cb2b127f9bc4.jpg?im_w=1200',
+        imageUrl: 'https://cdn.pixabay.com/photo/2017/03/30/04/14/house-2187170_960_720.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
 
       {
-        userId: 4,
+        userId: 5,
         address: '1009 Chamber Dr.',
         city: 'Syracuse',
         state: 'New York',
         country: 'United States',
         name: 'The Chamber Apartment',
         price: 180,
-        imageUrl: 'https://a0.muscache.com/im/pictures/07e099a3-6762-4bf3-977e-47665b01b83c.jpg?im_w=1200',
+        imageUrl: 'https://a0.muscache.com/im/pictures/miso/Hosting-10454498/original/65af793c-495b-4372-bef2-0618854e8dd9.jpeg?im_w=1200',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -146,10 +160,63 @@ module.exports = {
         country: 'United States',
         name: 'Home in NM Ghosttown',
         price: 600,
-        imageUrl: 'https://scarebnb.rentals/assets/images/image26.jpg?v=18af5830',
+        imageUrl: 'https://a0.muscache.com/im/pictures/b0d1ab60-1bca-45cc-8456-70ab6cb4cf5e.jpg?im_w=720',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+
+      {
+        userId: 4,
+        address: '681 Sunset Dr.',
+        city: 'Mountain View',
+        state: 'California',
+        country: 'United States',
+        name: 'Ghostly Bedroom',
+        price: 85,
+        imageUrl: 'https://a0.muscache.com/im/pictures/afe940a3-9595-4def-9b64-7881a90dfee0.jpg?im_w=1200',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {
+        userId: 4,
+        address: '7117 Manchester Court',
+        city: 'Milville',
+        state: 'New Jersey',
+        country: 'United States',
+        name: 'Unholy Boudoir',
+        price: 300,
+        imageUrl: 'https://a0.muscache.com/im/pictures/de1caf7f-57b1-490b-b4d4-a4c1514398a2.jpg?im_w=1200',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {
+        userId: 4,
+        address: '350 Miles Lane',
+        city: 'Newport News',
+        state: 'Virginia',
+        country: 'United States',
+        name: "The Flying Dutchman's",
+        price: 500,
+        imageUrl:'https://a0.muscache.com/im/pictures/miso/Hosting-10454498/original/bdb614c1-6141-49af-9aa2-7bea43d6f966.jpeg?im_w=720',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {
+        userId: 4,
+        address: '9914 Tanglewood Dr.',
+        city: 'Wilmington',
+        state: 'Massachusetts',
+        country: 'United States',
+        name: 'Travelling Circus Camp',
+        price: 350,
+        imageUrl: 'https://a0.muscache.com/im/pictures/miso/Hosting-10454498/original/9b803622-84a1-47b8-8388-2e85c8d7ac3c.jpeg?im_w=720',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
     ], {});
   },
 
