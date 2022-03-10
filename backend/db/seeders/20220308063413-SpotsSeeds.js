@@ -11,7 +11,7 @@ module.exports = {
         country: 'United Kingdom',
         name: 'The Haunted Bedroom at Talliston',
         price: 200,
-        imageUrl: 'https://a0.muscache.com/im/pictures/de4c65f8-6e66-475b-a9cb-15cc0e236e4e.jpg?im_w=1200',
+        imageUrl: 'https://a0.muscache.com/im/pictures/3f836149-fb83-47e6-aa05-0a038c6a0c82.jpg?im_w=720',
         createdAt: new Date(),
         updatedAt: new Date(),
 
@@ -134,7 +134,7 @@ module.exports = {
         country: 'Italy',
         name: 'Castello Dal Pozzo',
         price: 600,
-        imageUrl: 'https://imgix.bustle.com/uploads/image/2018/9/27/27aa8ba7-1322-4955-838e-84b598589221-castello.jpg?w=632&fit=crop&crop=faces&auto=format%2Ccompress',
+        imageUrl: 'https://medhaavi.in/wp-content/uploads/2020/11/1-1-1024x681.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -158,7 +158,7 @@ module.exports = {
         city: 'Truth or Consequences',
         state: 'New Mexico',
         country: 'United States',
-        name: 'Home in NM Ghosttown',
+        name: 'Home in Ghosttown',
         price: 600,
         imageUrl: 'https://a0.muscache.com/im/pictures/b0d1ab60-1bca-45cc-8456-70ab6cb4cf5e.jpg?im_w=720',
         createdAt: new Date(),
@@ -216,6 +216,61 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+
+      {
+        userId: 4,
+        address: '939 Poplar Drive',
+        city: 'Cedar Rapids',
+        state: 'Iowa',
+        country: 'United States',
+        name: 'Ghastly Stay',
+        price: 150,
+        imageUrl: 'https://a0.muscache.com/im/pictures/00eecd71-5631-46d6-a999-1bd0f041a933.jpg?im_w=720',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {
+        userId: 4,
+        address: '475 Windfall Avenue',
+        city: 'Austin',
+        state: 'Texas',
+        country: 'United States',
+        name: 'Quaint Cottage',
+        price: 120,
+        imageUrl: 'https://a0.muscache.com/im/pictures/miso/Hosting-10454498/original/f49cd7a1-27ca-49cc-8a6c-7d3f7f763e26.jpeg?im_w=720',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+
+      },
+
+      {
+        userId: 4,
+        address: '17 Lakeshore Lane',
+        city: 'San Pablo',
+        state: 'California',
+        country: 'United States',
+        name: 'Sunset Home',
+        price: 280,
+        imageUrl: 'https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/https%3A%2F%2Fstorage.googleapis.com%2Fgen-atmedia%2F2%2F2017%2F09%2F45fb831edeb674b59b27bfc848a91076dae0d904.jpeg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {
+        userId: 4,
+        address: '9246 S. Lower River St.',
+        city: 'Glen Allen',
+        state: 'Virginia',
+        country: 'United States',
+        name: 'Gothic Home',
+        price: 650,
+        imageUrl: 'https://i.pinimg.com/564x/5c/86/46/5c86463b16a1a0638cb8324b0e5c65d5.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
+      {}
 
     ], {});
   },
