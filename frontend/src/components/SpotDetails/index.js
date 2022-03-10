@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './SpotDetails.css';
 import { getOneSpot } from '../../store/spot';
 import * as sessionActions from '../../store/session';
+import * as spotActions from '../../store/spot';
 
 function SpotDetails() {
+    const history = useHistory();
     const { spotId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spot.allSpots[spotId]);
@@ -15,12 +17,33 @@ function SpotDetails() {
     const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
 
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [errors, setErrors] = useState([]);
+    const [imageUrl, setImageUrl] = useState('');
+
+    const userId = useSelector(state => state.session.user.id);
+
     useEffect(() => {
         dispatch(getOneSpot(spotId));
 
     }, [dispatch, spotId])
 
-    if(sessionUser && spot.userId === sessionUser.id) {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrors([]);
+        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log(data)
+                if(data && data.errors) setErrors(data.errors);
+            })
+            .then(() => history.push(`/spots/${spotId}`))
 
     }
 
@@ -50,9 +73,76 @@ function SpotDetails() {
 
             {showUpdateForm === true ?
                 <div>
-                    <form>
-                        
-                    </form>
+                     <form className="create-spot-form" onSubmit={handleSubmit}>
+                <div className="create-spot-title">
+                    <label>
+                    Update Your Haunted Listing
+                    </label>
+                </div>
+
+                <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Name"
+                />
+
+                <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+                placeholder="Address"
+                />
+
+                <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+                placeholder="City"
+                />
+
+                <input
+                type="text"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+                placeholder="State"
+                />
+
+                <input
+                type="text"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                required
+                placeholder="Country"
+                />
+
+                <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(+e.target.value)}
+                required
+                placeholder="Price"
+                />
+
+                <input
+                type="text"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                required
+                placeholder="Image url"
+                />
+
+                <button className="create-spot-btn" type="submit">Update Spot</button>
+
+
+                <ul>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+            </form>
                 </div>
             : null
             }

@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD_SPOTS = 'spot/LOADSPOTS';
 const ADD_SPOT = 'spot/ADDSPOT';
 const GET_ONE = 'spot/GET_ONE';
+const UPDATE_ONE = 'spot/UPDATE_ONE';
 
 
 export const loadSpots = (spots) => {
@@ -27,6 +28,14 @@ export const getOne = (spot) => {
     }
 };
 
+export const updateOne = (spot) => {
+    return {
+        type: UPDATE_ONE,
+        spot
+
+    }
+};
+
 export const getSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`);
 
@@ -36,6 +45,7 @@ export const getSpots = () => async (dispatch) => {
       return spots;
     }
   };
+
 
 
   export const addListing = (spot) => async (dispatch) => {
@@ -71,6 +81,29 @@ export const getSpots = () => async (dispatch) => {
       }
   };
 
+  export const updateSpot = spot => async dispatch => {
+      const response = await csrfFetch(`/api/spots/${spot.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId,
+            address,
+            city,
+            state,
+            country,
+            name,
+            price,
+            imageUrl
+          })
+      })
+      if (response.ok) {
+        const spot = await response.json();
+        dispatch(updateOne(spot));
+        return spot;
+      }
+  }
 
 
 const initialState = { spot: null };
@@ -113,6 +146,14 @@ const spotReducer = (state = initialState, action) => {
             // newSpot.spot = action.payload;
             // return newSpot;
         case GET_ONE:
+            return {
+                ...state,
+                [action.spot.id]: {
+                    ...state[action.spot.id],
+                    ...action.spot
+                }
+            }
+        case UPDATE_ONE:
             return {
                 ...state,
                 [action.spot.id]: {
