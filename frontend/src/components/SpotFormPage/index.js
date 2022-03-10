@@ -64,6 +64,8 @@ function SpotFormPage() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
+                // maxLength={11}
+                // minLength={5}
                 placeholder="Address"
                 />
 
