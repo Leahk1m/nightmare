@@ -58,3 +58,27 @@
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
+
+.profile-dropdown {
+    display: inline-block;
+}
+
+.home-ghost-btn {
+    margin: 20px;
+}
+
+.ghost-btn-title {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ff385c;
+}
+
+.logout-btn-container {
+    margin: 10px;
+}
+
+.user-info-title {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+
+}
