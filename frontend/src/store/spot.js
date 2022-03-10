@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const LOAD_SPOTS = 'spot/LOADSPOTS';
 const ADD_SPOT = 'spot/ADDSPOT';
+const GET_ONE = 'spot/GET_ONE';
 
 
 export const loadSpots = (spots) => {
@@ -16,7 +17,15 @@ export const addSpot = (spot) => {
         type: ADD_SPOT,
         spot
     }
-}
+};
+
+export const getOne = (spot) => {
+    return {
+        type: GET_ONE,
+        spot
+
+    }
+};
 
 export const getSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`);
@@ -51,6 +60,15 @@ export const getSpots = () => async (dispatch) => {
     // console.log(data)
     dispatch(addSpot(data));
     return response;
+  };
+
+  export const getOneSpot = id => async dispatch => {
+      const response = await fetch(`/api/spots/${id}`);
+
+      if(response.ok) {
+          const spot = await response.json();
+          dispatch(getOne(spot));
+      }
   };
 
 
@@ -94,6 +112,14 @@ const spotReducer = (state = initialState, action) => {
             // console.log(newSpot.allSpots)
             // newSpot.spot = action.payload;
             // return newSpot;
+        case GET_ONE:
+            return {
+                ...state,
+                [action.spot.id]: {
+                    ...state[action.spot.id],
+                    ...action.spot
+                }
+            }
 
         default:
             return state;

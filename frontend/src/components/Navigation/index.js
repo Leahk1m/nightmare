@@ -27,7 +27,7 @@ function Navigation({ isLoaded }){
   return (
     <div className="home-signup-login-nav">
         <div className="logo-home">
-            <img className="bat-logo" src={logo}/>
+            <img className="bat-logo" src={logo} alt="this-is-my-logo"/>
             <NavLink className="nav-link-path" id="nightmarebnb-nav-link" exact to="/">nightmarebnb</NavLink>
         </div>
 

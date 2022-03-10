@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import SpotFormPage from "./components/SpotFormPage";
 import HomePage from "./components/HomePage";
 import SpotShow from "./components/SpotShow";
+import SpotDetails from "./components/SpotDetails";
 
 import * as sessionActions from "./store/session";
 import * as spotActions from "./store/spot";
@@ -38,8 +39,11 @@ function App() {
           <Route path="/add-spot">
             <SpotFormPage />
           </Route>
-          <Route path="/spots">
+          <Route exact path="/spots">
             <SpotShow spotsData={spotsData}/>
+          </Route>
+          <Route path="/spots/:spotId">
+            <SpotDetails spotsData={spotsData}/>
           </Route>
         </Switch>
       )}
