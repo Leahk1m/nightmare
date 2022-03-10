@@ -31,8 +31,10 @@ router.get('/:id', asyncHandler(async(req, res) => {
 }));
 
 router.put('/:id', spotValidations.validateUpdate, asyncHandler(async(req, res) => {
-    const id = req.body.id;
-    delete req.body.id;
+    const id = req.body.spotId;
+    // console.log(req.body.userId);
+
+    delete req.body.spotId;
     await Spot.update(req.body, {
         where: { id },
         returning: true,
