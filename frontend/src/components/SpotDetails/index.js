@@ -32,6 +32,12 @@ function SpotDetails() {
 
     }, [dispatch, spotId])
 
+    const deleteSpot = (e) => {
+        e.preventDefault();
+        dispatch(deleteListing())
+        history.push('/spots')
+    };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -149,7 +155,7 @@ function SpotDetails() {
             {sessionUser && spot.userId === sessionUser.id ?
                 <div>
                     <button onClick={() => setShowUpdateForm(true)}>Update Spot</button>
-                    <button onClick={deleteListing}>Delete Spot</button>
+                    <button onClick={deleteSpot}>Delete Spot</button>
                 </div>
 
 
