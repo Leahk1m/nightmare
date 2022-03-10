@@ -25,7 +25,7 @@ module.exports = {
         country: 'United States',
         name: 'Phantoms Lair',
         price: 218,
-        imageUrl: 'https://i.pinimg.com/originals/70/1e/fd/701efd17ddb106cbae1d694d3e70d07b.jpg',
+        imageUrl: 'https://a0.muscache.com/pictures/f67f9531-a282-45c3-b10a-9bd57c00e0cb.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
