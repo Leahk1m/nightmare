@@ -4,6 +4,7 @@ const LOAD_SPOTS = 'spot/LOADSPOTS';
 const ADD_SPOT = 'spot/ADDSPOT';
 const GET_ONE = 'spot/GET_ONE';
 const UPDATE_ONE = 'spot/UPDATE_ONE';
+const REMOVE_ONE = 'spot/REMOVE_ONE';
 
 
 export const loadSpots = (spots) => {
@@ -33,6 +34,14 @@ export const updateOne = (spot) => {
         type: UPDATE_ONE,
         spot
 
+    }
+};
+
+export const removeOne = (spotId, userId) => {
+    return {
+        type: REMOVE_ONE,
+        spotId,
+        userId
     }
 };
 
@@ -106,7 +115,20 @@ export const getSpots = () => async (dispatch) => {
         dispatch(updateOne(spot));
         return spot;
       }
-  }
+  };
+
+  export const deleteListing = (spotId, userId) => async dispatch => {
+      const response = await csrfFetch(`/api/spots/${spotId}`, {
+          method: 'DELETE'
+      });
+
+      if(response.ok) {
+          const { id: deletedItemId } = await response.json();
+          dispatch(removeOne(deletedItemId, userId));
+          return deletedItemId;
+      }
+
+  };
 
 
 const initialState = { spot: null };
@@ -127,27 +149,18 @@ const spotReducer = (state = initialState, action) => {
             return {
                 allSpots,
                 objSpots,
-                // ...state
             };
         case ADD_SPOT:
-            // return {
-            //     ...state,
-            //     spot: { ...state.spot, [action.article.id]: action.article }
-            //     };
             newSpot = Object.assign({}, state);
             allSpots = newSpot.allSpots;
             objSpots = newSpot.objSpots;
             allSpots.push(action.spot);
             objSpots[action.spot.id] = action.spot
-            // console.log(action.spot)
+
             return {
-                // newSpot,
                 allSpots,
                 objSpots,
             }
-            // console.log(newSpot.allSpots)
-            // newSpot.spot = action.payload;
-            // return newSpot;
         case GET_ONE:
             return {
                 ...state,
@@ -168,6 +181,10 @@ const spotReducer = (state = initialState, action) => {
                 allSpots,
                 objSpots
             }
+        case REMOVE_ONE:
+            const newState = {...state};
+            delete newState[action.spotId];
+            return newState;
 
         default:
             return state;
