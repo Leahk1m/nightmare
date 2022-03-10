@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './SpotDetails.css';
-import { getOneSpot, updateSpot } from '../../store/spot';
-import * as sessionActions from '../../store/session';
+import { getOneSpot, deleteListing } from '../../store/spot';
+
 import * as spotActions from '../../store/spot';
 
 function SpotDetails() {
@@ -12,7 +12,6 @@ function SpotDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spot.objSpots[spotId]);
     const dispatch = useDispatch();
-    // const foundSpot = spotsData.find((spot) => spot.allSpots.id === spotId);
 
     const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -150,7 +149,10 @@ function SpotDetails() {
             {sessionUser && spot.userId === sessionUser.id ?
                 <div>
                     <button onClick={() => setShowUpdateForm(true)}>Update Spot</button>
+                    <button onClick={deleteListing}>Delete Spot</button>
                 </div>
+
+
 
 
 
