@@ -30,5 +30,19 @@ router.get('/:id', asyncHandler(async(req, res) => {
 
 }));
 
+router.put('/:id', spotValidations.validateUpdate, asyncHandler(async(req, res) => {
+    const id = req.body.id;
+    delete req.body.id;
+    await Spot.update(req.body, {
+        where: { id },
+        returning: true,
+        plain: true,
+    });
+    const spot = await Spot.findByPk(id);
+
+    return res.json(spot);
+
+}));
+
 
 module.exports = router;
