@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -28,6 +29,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
 
   return (
@@ -36,17 +38,20 @@ function ProfileButton({ user }) {
         Add a New Spooky Spot
       </Link>
 
-      <button onClick={openMenu}>
-        <i className="fa-solid fa-ghost"></i>
-      </button>
+      <div className="home-ghost-btn">
+        <p className="ghost-btn-title">click me</p>
+        <button onClick={openMenu}>
+          <i className="fa-solid fa-ghost"></i>
+        </button>
+      </div>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+        <div className="profile-dropdown">
+          <p className="user-info-title">Welcome, {user.username}</p>
+          <p className="user-info-title">email: {user.email}</p>
+          <div className="logout-btn-container">
+              <button onClick={logout}>Log Out</button>
+          </div>
+        </div>
       )}
     </>
   );

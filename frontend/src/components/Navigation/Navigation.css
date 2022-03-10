@@ -48,6 +48,45 @@
 }
 
 .add-spooky-spot-link {
-    color: pink;
+    color: #ff385c;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-spots-btn {
+    color: #ff385c;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.profile-dropdown {
+    display: inline-block;
+}
+
+.home-ghost-btn {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.ghost-btn-title {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ff385c;
+}
+
+.logout-btn-container {
+    margin: 10px;
+}
+
+.user-info-title {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-size: 11px;
+    padding-right: 13px;
+
+}
+
+.nav-spots-btn-container {
+    
 }

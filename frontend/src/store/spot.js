@@ -2,6 +2,9 @@ import { csrfFetch } from './csrf';
 
 const LOAD_SPOTS = 'spot/LOADSPOTS';
 const ADD_SPOT = 'spot/ADDSPOT';
+const GET_ONE = 'spot/GET_ONE';
+const UPDATE_ONE = 'spot/UPDATE_ONE';
+const REMOVE_ONE = 'spot/REMOVE_ONE';
 
 
 export const loadSpots = (spots) => {
@@ -16,7 +19,30 @@ export const addSpot = (spot) => {
         type: ADD_SPOT,
         spot
     }
-}
+};
+
+export const getOne = (spot) => {
+    return {
+        type: GET_ONE,
+        spot
+
+    }
+};
+
+export const updateOne = (spot) => {
+    return {
+        type: UPDATE_ONE,
+        spot
+
+    }
+};
+
+export const removeOne = (spotId) => {
+    return {
+        type: REMOVE_ONE,
+        spotId
+    }
+};
 
 export const getSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`);
@@ -27,6 +53,7 @@ export const getSpots = () => async (dispatch) => {
       return spots;
     }
   };
+
 
 
   export const addListing = (spot) => async (dispatch) => {
@@ -53,6 +80,55 @@ export const getSpots = () => async (dispatch) => {
     return response;
   };
 
+  export const getOneSpot = id => async dispatch => {
+      const response = await fetch(`/api/spots/${id}`);
+
+      if(response.ok) {
+          const spot = await response.json();
+          dispatch(getOne(spot));
+      }
+  };
+
+  export const updateSpot = spot => async dispatch => {
+    const { spotId, userId, address, city, state, country, name, price, imageUrl } = spot;
+      const response = await csrfFetch(`/api/spots/${userId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            spotId,
+            userId,
+            address,
+            city,
+            state,
+            country,
+            name,
+            price,
+            imageUrl
+          })
+      })
+      if (response.ok) {
+        const spot = await response.json();
+        // console.log(spot)
+        dispatch(updateOne(spot));
+        return spot;
+      }
+  };
+
+  export const deleteListing = (spotId) => async dispatch => {
+      const response = await csrfFetch(`/api/spots/${spotId}`, {
+          method: 'DELETE'
+      });
+
+      if(response.ok) {
+          const { id: deletedItemId } = await response.json();
+        //   console.log(deletedItemId)
+          dispatch(removeOne(deletedItemId));
+          return deletedItemId;
+      }
+
+  };
 
 
 const initialState = { spot: null };
@@ -73,27 +149,50 @@ const spotReducer = (state = initialState, action) => {
             return {
                 allSpots,
                 objSpots,
-                // ...state
             };
         case ADD_SPOT:
-            // return {
-            //     ...state,
-            //     spot: { ...state.spot, [action.article.id]: action.article }
-            //     };
             newSpot = Object.assign({}, state);
             allSpots = newSpot.allSpots;
             objSpots = newSpot.objSpots;
             allSpots.push(action.spot);
             objSpots[action.spot.id] = action.spot
-            // console.log(action.spot)
+
             return {
-                // newSpot,
                 allSpots,
                 objSpots,
             }
-            // console.log(newSpot.allSpots)
-            // newSpot.spot = action.payload;
-            // return newSpot;
+        case GET_ONE:
+            return {
+                ...state,
+                [action.spot.id]: {
+                    ...state[action.spot.id],
+                    ...action.spot
+                }
+            }
+        case UPDATE_ONE:
+            console.log(action.spot)
+            newSpot = Object.assign({}, state);
+            allSpots = newSpot.allSpots;
+            objSpots = newSpot.objSpots;
+            allSpots[action.spot.id - 1] = action.spot;
+            objSpots[action.spot.id] = action.spot;
+
+            return {
+                allSpots,
+                objSpots
+            }
+        case REMOVE_ONE:
+            const newState = {...state};
+            delete newState.objSpots[action.spotId]
+            let index;
+            newState.allSpots.forEach((spot, i) => {
+                if(spot.id === action.spotId) {
+                    return index = i;
+                }
+            })
+            newState.allSpots.splice(index, 1)
+            delete newState[action.spotId]
+            return newState;
 
         default:
             return state;

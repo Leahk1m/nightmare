@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
-import { Redirect } from 'react-router-dom';
 // import * as sessionActions from '../../store/session';
 import './SpotForm.css';
 
@@ -48,7 +47,7 @@ function SpotFormPage() {
             <form className="create-spot-form" onSubmit={handleSubmit}>
                 <div className="create-spot-title">
                     <label>
-                    Create a spooky spot
+                    Create a Haunted Listing
                     </label>
                 </div>
 

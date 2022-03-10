@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './SpotShow.css';
+
 // import { useDispatch, useSelector } from "react-redux";
 // import { getSpots } from '../../store/spot';
 
@@ -31,7 +32,7 @@ function SpotShow({ spotsData }) {
                     </Link>
 
                     <p className="indiv-spot-description-showpage">
-                        {`$`}{spot.price}{` / night`}
+                       ${spot.price} / night
                     </p>
 
                 </div>
