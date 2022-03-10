@@ -20,7 +20,7 @@ function SpotFormPage() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-    const [created, setCreated] = useState(false);
+    // const [created, setCreated] = useState(false);
 
 
     const userId = useSelector(state => state.session.user.id);
@@ -29,18 +29,18 @@ function SpotFormPage() {
         e.preventDefault();
         setErrors([]);
         await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
-            .then(setCreated(true))
-            // .catch(async (res) => {
-            //     const data = await res.json();
-            //     console.log(data)
-            //     if(data && data.errors) setErrors(data.errors);
-            // })
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log(data)
+                if(data && data.errors) setErrors(data.errors);
+            })
+            .then(() => history.push('/spots'))
 
     }
 
-    if(created === true) return (
-        <Redirect to="/spots" />
-    );
+    // if(created === true) return (
+    //     <Redirect to="/spots" />
+    // );
 
     return(
         <div className="create-form-container">

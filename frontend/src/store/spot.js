@@ -14,7 +14,7 @@ export const loadSpots = (spots) => {
 export const addSpot = (spot) => {
     return {
         type: ADD_SPOT,
-        payload: spot
+        spot
     }
 }
 
@@ -48,8 +48,8 @@ export const getSpots = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    console.log(data)
-    await dispatch(addSpot(data.spot));
+    // console.log(data)
+    dispatch(addSpot(data));
     return response;
   };
 
@@ -60,10 +60,12 @@ const initialState = { spot: null };
 
 const spotReducer = (state = initialState, action) => {
     let newSpot;
+    let allSpots;
+    let objSpots;
     switch (action.type) {
         case LOAD_SPOTS:
-            const allSpots = [];
-            const objSpots = {};
+            allSpots = [];
+            objSpots = {};
             action.spots.forEach(spot => {
                 allSpots.push(spot);
                 objSpots[spot.id] = spot;
@@ -71,12 +73,27 @@ const spotReducer = (state = initialState, action) => {
             return {
                 allSpots,
                 objSpots,
-                ...state
+                // ...state
             };
         case ADD_SPOT:
+            // return {
+            //     ...state,
+            //     spot: { ...state.spot, [action.article.id]: action.article }
+            //     };
             newSpot = Object.assign({}, state);
-            newSpot.spot = action.payload;
-            return newSpot;
+            allSpots = newSpot.allSpots;
+            objSpots = newSpot.objSpots;
+            allSpots.push(action.spot);
+            objSpots[action.spot.id] = action.spot
+            // console.log(action.spot)
+            return {
+                // newSpot,
+                allSpots,
+                objSpots,
+            }
+            // console.log(newSpot.allSpots)
+            // newSpot.spot = action.payload;
+            // return newSpot;
 
         default:
             return state;
