@@ -82,12 +82,14 @@ export const getSpots = () => async (dispatch) => {
   };
 
   export const updateSpot = spot => async dispatch => {
-      const response = await csrfFetch(`/api/spots/${spot.id}`, {
+    const { spotId, userId, address, city, state, country, name, price, imageUrl } = spot;
+      const response = await csrfFetch(`/api/spots/${userId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            spotId,
             userId,
             address,
             city,
@@ -100,6 +102,7 @@ export const getSpots = () => async (dispatch) => {
       })
       if (response.ok) {
         const spot = await response.json();
+        // console.log(spot)
         dispatch(updateOne(spot));
         return spot;
       }
@@ -154,12 +157,16 @@ const spotReducer = (state = initialState, action) => {
                 }
             }
         case UPDATE_ONE:
+            console.log(action.spot)
+            newSpot = Object.assign({}, state);
+            allSpots = newSpot.allSpots;
+            objSpots = newSpot.objSpots;
+            allSpots[action.spot.id - 1] = action.spot;
+            objSpots[action.spot.id] = action.spot;
+
             return {
-                ...state,
-                [action.spot.id]: {
-                    ...state[action.spot.id],
-                    ...action.spot
-                }
+                allSpots,
+                objSpots
             }
 
         default:

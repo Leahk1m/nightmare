@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './SpotDetails.css';
-import { getOneSpot } from '../../store/spot';
+import { getOneSpot, updateSpot } from '../../store/spot';
 import * as sessionActions from '../../store/session';
 import * as spotActions from '../../store/spot';
 
@@ -10,7 +10,7 @@ function SpotDetails() {
     const history = useHistory();
     const { spotId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
-    const spot = useSelector(state => state.spot.allSpots[spotId]);
+    const spot = useSelector(state => state.spot.objSpots[spotId]);
     const dispatch = useDispatch();
     // const foundSpot = spotsData.find((spot) => spot.allSpots.id === spotId);
 
@@ -29,7 +29,7 @@ function SpotDetails() {
     const userId = useSelector(state => state.session.user.id);
 
     useEffect(() => {
-        dispatch(getOneSpot(spotId));
+        dispatch(getOneSpot(spotId))
 
     }, [dispatch, spotId])
 
@@ -37,7 +37,7 @@ function SpotDetails() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
+        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
                 console.log(data)
