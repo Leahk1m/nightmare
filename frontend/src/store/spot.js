@@ -37,11 +37,10 @@ export const updateOne = (spot) => {
     }
 };
 
-export const removeOne = (spotId, userId) => {
+export const removeOne = (spotId) => {
     return {
         type: REMOVE_ONE,
-        spotId,
-        userId
+        spotId
     }
 };
 
@@ -117,14 +116,15 @@ export const getSpots = () => async (dispatch) => {
       }
   };
 
-  export const deleteListing = (spotId, userId) => async dispatch => {
+  export const deleteListing = (spotId) => async dispatch => {
       const response = await csrfFetch(`/api/spots/${spotId}`, {
           method: 'DELETE'
       });
 
       if(response.ok) {
           const { id: deletedItemId } = await response.json();
-          dispatch(removeOne(deletedItemId, userId));
+        //   console.log(deletedItemId)
+          dispatch(removeOne(deletedItemId));
           return deletedItemId;
       }
 
@@ -183,7 +183,15 @@ const spotReducer = (state = initialState, action) => {
             }
         case REMOVE_ONE:
             const newState = {...state};
-            delete newState[action.spotId];
+            delete newState.objSpots[action.spotId]
+            let index;
+            newState.allSpots.forEach((spot, i) => {
+                if(spot.id === action.spotId) {
+                    return index = i;
+                }
+            })
+            newState.allSpots.splice(index, 1)
+            delete newState[action.spotId]
             return newState;
 
         default:
