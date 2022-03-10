@@ -36,7 +36,7 @@ module.exports = {
         city: 'Ellicott City',
         state: 'Maryland',
         country: 'United States',
-        name: 'Victorian Gothic Castle Mansion',
+        name: 'Victorian Gothic Mansion',
         price: 500,
         imageUrl: 'https://circaoldhouses.com/wp-content/uploads/2020/01/50-Crows-Nest-Road-Bronxville-NY-2.jpg',
         createdAt: new Date(),
