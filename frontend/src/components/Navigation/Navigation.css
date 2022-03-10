@@ -64,7 +64,9 @@
 }
 
 .home-ghost-btn {
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
 }
 
 .ghost-btn-title {
@@ -80,5 +82,11 @@
 .user-info-title {
     font-family: 'Montserrat', sans-serif;
     color: black;
+    font-size: 11px;
+    padding-right: 13px;
 
+}
+
+.nav-spots-btn-container {
+    
 }
