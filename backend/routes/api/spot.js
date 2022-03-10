@@ -12,7 +12,7 @@ const spotValidations = require('../../validations/spot');
 router.get('/', asyncHandler(async(_req, res) => {
     const spots = await Spot.findAll();
     return res.json(spots);
-}))
+}));
 
 router.post('/', spotValidations.validateCreate, asyncHandler(async(req, res) => {
     const details = req.body;
@@ -21,7 +21,14 @@ router.post('/', spotValidations.validateCreate, asyncHandler(async(req, res) =>
     res.json(spot)
     // return res.redirect('/');
 
-}))
+}));
+
+router.get('/:id', asyncHandler(async(req, res) => {
+    const id = +req.params.id;
+    const spot = await Spot.findByPk(id);
+    return res.json(spot);
+
+}));
 
 
 module.exports = router;
