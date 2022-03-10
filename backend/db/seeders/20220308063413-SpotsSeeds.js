@@ -25,7 +25,7 @@ module.exports = {
         country: 'United States',
         name: 'Phantoms Lair',
         price: 218,
-        imageUrl: 'https://a0.muscache.com/im/pictures/b0ea455b-893c-40a3-9f70-82a76d51a811.jpg?im_w=1200',
+        imageUrl: 'https://i.pinimg.com/originals/70/1e/fd/701efd17ddb106cbae1d694d3e70d07b.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -52,7 +52,7 @@ module.exports = {
         country: 'United States',
         name: 'Boo and Breakfast',
         price: 420,
-        imageUrl: 'https://www.pufikhomes.com/wp-content/uploads/2019/04/stylish-swedish-cottage-in-dark-tones-pufikhomes-3.jpg',
+        imageUrl: 'https://www.impressiveinteriordesign.com/wp-content/uploads/2015/05/Modern-Gothic-Interior-Design-With-Its-Characteristics-And-Furniture-5.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -269,8 +269,6 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-
-      {}
 
     ], {});
   },
