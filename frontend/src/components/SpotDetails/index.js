@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './SpotDetails.css';
 import { getOneSpot } from '../../store/spot';
+import * as sessionActions from '../../store/session';
 
-function SpotDetails({ spotsData }) {
+function SpotDetails() {
     const { spotId } = useParams();
+    const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spot.allSpots[spotId]);
     const dispatch = useDispatch();
     // const foundSpot = spotsData.find((spot) => spot.allSpots.id === spotId);
 
     const [favorites, setFavorites] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
 
     }, [dispatch, spotId])
+
+    if(sessionUser && spot.userId === sessionUser.id) {
+
+    }
 
     return (
         <div className="spot-detail-container">
@@ -40,6 +47,26 @@ function SpotDetails({ spotsData }) {
                 </button>
 
             </div>
+
+            {showUpdateForm === true ?
+                <div>
+                    <form>
+                        
+                    </form>
+                </div>
+            : null
+            }
+
+            {sessionUser && spot.userId === sessionUser.id ?
+                <div>
+                    <button onClick={() => setShowUpdateForm(true)}>Update Spot</button>
+                </div>
+
+
+
+            : <div>bye</div>
+
+            }
 
         </div>
 

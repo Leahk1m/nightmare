@@ -43,7 +43,7 @@ function App() {
             <SpotShow spotsData={spotsData}/>
           </Route>
           <Route path="/spots/:spotId">
-            <SpotDetails spotsData={spotsData}/>
+            <SpotDetails />
           </Route>
         </Switch>
       )}
