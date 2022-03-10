@@ -18,6 +18,7 @@ router.post('/', spotValidations.validateCreate, asyncHandler(async(req, res) =>
     const details = req.body;
 
     const spot = await Spot.create(details);
+    res.json(spot)
     // return res.redirect('/');
 
 }))
