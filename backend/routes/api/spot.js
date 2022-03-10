@@ -5,8 +5,6 @@ const { Spot } = require('../../db/models');
 
 const router = express.Router();
 
-const { check } = require('express-validator');
-// const { handleValidationErrors } = require('../../utils/validation');
 const spotValidations = require('../../validations/spot');
 
 router.get('/', asyncHandler(async(_req, res) => {
@@ -44,6 +42,14 @@ router.put('/:id', spotValidations.validateUpdate, asyncHandler(async(req, res) 
 
     return res.json(spot);
 
+}));
+
+router.delete('/:id', asyncHandler(async(req, res) => {
+    const spot = await Spot.findByPk(req.params.id);
+    if(!spot) throw new Error('Cannot find spot');
+
+    await Spot.destroy({ where: {id: spot.id }});
+    return res.json({ id: spot.id });
 }));
 
 
