@@ -48,6 +48,13 @@
 }
 
 .add-spooky-spot-link {
-    color: pink;
+    color: #ff385c;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-spots-btn {
+    color: #ff385c;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
