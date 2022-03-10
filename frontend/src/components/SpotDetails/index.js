@@ -53,7 +53,7 @@ function SpotDetails() {
     }
 
     return (
-        <div className="spot-detail-container">
+        <div className="update-spot-detail-container">
             { spot ?
                 <div>
                     <h1 className="spot-detail-title">{spot.name}</h1>
@@ -143,7 +143,10 @@ function SpotDetails() {
                         placeholder="Image url"
                         />
 
-                        <button className="create-spot-btn" type="submit">Update Spot</button>
+                        <div className="update-spot-btn-container">
+                            <button className="update-spot-btn" type="submit">Update Spot</button>
+
+                        </div>
 
 
                         <ul>
