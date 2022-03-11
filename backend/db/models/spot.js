@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes) => {
   const Spot = sequelize.define('Spot', {
     userId: {
       allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id'
+      },
       type: DataTypes.INTEGER,
     },
     address: {
