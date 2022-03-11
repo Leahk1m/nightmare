@@ -1,0 +1,24 @@
+
+.missing-pg-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px;
+}
+
+.missing-pg-ghost-pic {
+   width: 400px;
+
+}
+
+.missing-pg-bear-ghost-pic {
+    border-radius: 10px;
+}
+
+.missing-pg-ghost-pic-container {
+    margin-bottom: 60px;
+}
+
+.pat-plz {
+    
+}

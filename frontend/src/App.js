@@ -9,6 +9,8 @@ import HomePage from "./components/HomePage";
 import SpotShow from "./components/SpotShow";
 import SpotDetails from "./components/SpotDetails";
 import FavoritesShow from "./components/FavoritesShow";
+import MySpots from "./components/MySpots";
+import MissingPage from "./components/MissingPage";
 
 import * as sessionActions from "./store/session";
 import * as spotActions from "./store/spot";
@@ -51,6 +53,12 @@ function App() {
           </Route>
           <Route path="/favorites">
             <FavoritesShow favData={favData}/>
+          </Route>
+          <Route path="/myspots">
+            <MySpots/>
+          </Route>
+          <Route path="/">
+            <MissingPage/>
           </Route>
         </Switch>
       )}

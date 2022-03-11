@@ -53,7 +53,17 @@
     justify-content: center;
 }
 
+
+.home-bat-moon {
+    width: 200px;
+}
+
+.bat-gif-container {
+
+}
+
 .ghost-gif-container {
-    background-image: url("https://media.istockphoto.com/vectors/cute-cartoon-ghost-pattern-vector-id487774484?k=20&m=487774484&s=612x612&w=0&h=t5xuMSgE1fG3mWehgrB9TmijuOX_0VRk0KGBlr0FJ4w=");
-    opacity: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
 }

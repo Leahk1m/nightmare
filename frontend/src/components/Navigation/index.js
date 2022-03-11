@@ -39,7 +39,7 @@ function Navigation({ isLoaded }){
         </div>
 
         <div>
-          <NavLink to="/favorites">
+          <NavLink className="nav-myspots-btn"to="/favorites">
               My Favorite Spots
           </NavLink>
         </div>
