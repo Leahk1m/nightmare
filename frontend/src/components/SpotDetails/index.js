@@ -5,6 +5,7 @@ import './SpotDetails.css';
 import { getOneSpot, deleteListing } from '../../store/spot';
 
 import * as spotActions from '../../store/spot';
+import * as favActions from '../../store/favorite';
 
 function SpotDetails() {
     const history = useHistory();
@@ -36,6 +37,18 @@ function SpotDetails() {
         e.preventDefault();
         dispatch(deleteListing(spotId))
             .then(() => history.push(`/spots`))
+    };
+
+    const addToFav = (e) => {
+        e.preventDefault();
+        dispatch(favActions.addingFavorite({spotId, userId}))
+            .then(() => history.push(`/favorites`))
+
+    };
+
+    const deleteFav = (e) => {
+        e.preventDefault();
+        
     };
 
 
@@ -72,7 +85,7 @@ function SpotDetails() {
                     </div>
 
                     <div className="fav-btn-container">
-                        <button onClick={() => setFavorites(true)} className="spot-detail-fav-btn">
+                        <button onClick={addToFav} className="spot-detail-fav-btn">
                             Add to Favorites
                         </button>
 
@@ -162,10 +175,6 @@ function SpotDetails() {
                             <button onClick={() => setShowUpdateForm(true)}>Update Spot</button>
                             <button onClick={deleteSpot}>Delete Spot</button>
                         </div>
-
-
-
-
 
                     : null
 

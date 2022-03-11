@@ -10,6 +10,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import * as spotActions from './store/spot';
+import * as favActions from './store/favorite';
 
 const store = configureStore();
 
@@ -20,6 +21,8 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.sessionActions = sessionActions;
   window.spotActions = spotActions;
+  window.favActions = favActions;
+
 }
 
 function Root() {
