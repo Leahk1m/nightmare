@@ -12,6 +12,7 @@ import FavoritesShow from "./components/FavoritesShow";
 
 import * as sessionActions from "./store/session";
 import * as spotActions from "./store/spot";
+import * as favActions from "./store/favorite";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function App() {
 
   useEffect(() => {
     dispatch(spotActions.getSpots())
+    dispatch(favActions.getFavorites())
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 

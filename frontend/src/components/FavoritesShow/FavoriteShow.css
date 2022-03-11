@@ -1,0 +1,13 @@
+.fav-spot-img {
+    width: 600px;
+    height: 400px;
+}
+
+.favSpot-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+
+}
