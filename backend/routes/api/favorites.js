@@ -13,7 +13,6 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.post('/', handleValidationErrors, asyncHandler(async(req, res) => {
     const details = req.body;
-    console.log(req.body)
     const favorite = await Favorite.create(details);
     res.json(favorite)
 
