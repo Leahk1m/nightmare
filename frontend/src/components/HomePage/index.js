@@ -40,12 +40,12 @@ const HomePage = () => {
 
 
             <div className="ghost-gif-container">
-                <img className="three-guiding-ghosts"src='https://thumbs.gfycat.com/FavorableDeliciousChuckwalla-size_restricted.gif' alt="ghost-gif"/>
-            </div>
-            <div className="bat-gif-container">
-                <img className="home-bat-moon"src="https://media4.giphy.com/avatars/NaeLetters/zmyjWUw0cYGF.gif" alt="home-bat"/>
+                <div classNamr="container-for-three-ghosts">
+                    <img className="three-guiding-ghosts"src='https://thumbs.gfycat.com/FavorableDeliciousChuckwalla-size_restricted.gif' alt="ghost-gif"/>
 
+                </div>
             </div>
+
 
         </div>
     );
