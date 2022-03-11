@@ -15,16 +15,20 @@ function SpotDetails() {
     const dispatch = useDispatch();
     let favs = useSelector(state => state.favorites.allFavorites);
     const userId = useSelector(state => state.session.user.id);
-    const [favId, setFavId] = useState('');
+    // const [favId, setFavId] = useState('');
 
+    let favId;
     if(favs[0]) {
         for(let i = 0; i < favs.length; i++) {
             let fav = favs[i];
             if(fav.spotId == spotId && fav.userId == userId) {
-                setFavId(fav.id)
+                // setFavId(fav.id)
+                favId = fav.id
             }
         }
     }
+
+
 
     const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -52,12 +56,13 @@ function SpotDetails() {
     const addToFav = (e) => {
         e.preventDefault();
         dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
-
+            .then(() => history.push('/favorites'))
     };
 
     const deleteFav = (e) => {
         e.preventDefault();
         dispatch(favActions.deletingFavorite(favId))
+            .then(() => history.push('/favorites'))
 
     };
 

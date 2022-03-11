@@ -12,27 +12,14 @@ function FavoritesShow({ favData }) {
     const spots = useSelector(state => state.spot.objSpots);
     favData.filter((fav) => fav.userId === userId);
 
-
-    // const foundFav = spots.filter(())
-    //store ids in favorite
-    // const [favorite, setFavorite] = useState([]);
-
-    // const addToFavorit
-    // useEffect(() => {
-    //     dispatch(favActions.getFavorites(favData))
-
-    // }, [dispatch])
-
     return (
-        <div>
-
+        <div className="fav-show-container">
             {(favData || []).map((favSpot) => (
                 <div className="favSpot-container" key={favSpot.id}>
-                    <h2>{spots[favSpot.spotId].name}</h2>
+                    <h3>{spots[favSpot.spotId].name}</h3>
                     <Link to={`/spots/${favSpot.spotId}`}>
                         <img className="fav-spot-img" src={spots[favSpot.spotId].imageUrl}/>
                     </Link>
-
                 </div>
             ))}
         </div>

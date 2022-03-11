@@ -1,13 +1,21 @@
 .fav-spot-img {
-    width: 600px;
-    height: 400px;
+    width: 100%;
 }
 
 .favSpot-container {
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column-reverse;
     flex-wrap: wrap;
     margin: 20px;
+    width: 400px;
+    height: 400px;
+}
 
+.fav-show-container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
