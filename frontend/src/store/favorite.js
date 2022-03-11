@@ -90,6 +90,7 @@ const favoritesReducer = (state = initialState, action) => {
     let newFavorite;
     let allFavorites;
     let objFavorites;
+    let myFavorites;
     switch(action.type) {
         case LOAD_FAVORITES:
             allFavorites = [];
@@ -103,7 +104,6 @@ const favoritesReducer = (state = initialState, action) => {
                 objFavorites
             };
         case ADD_FAVORITE:
-            console.log(action)
             newFavorite = Object.assign({}, state);
             allFavorites = newFavorite.allFavorites;
             objFavorites = newFavorite.objFavorites;
@@ -115,11 +115,18 @@ const favoritesReducer = (state = initialState, action) => {
                 objFavorites
             }
         case REMOVE_FAVORITE:
-            
-
+            const newState = {...state};
+            delete newState.objFavorites[action.favId]
+            let index;
+            newState.allFavorites.forEach((fav, i) => {
+                if(fav.id === action.favId) {
+                    return index = i
+                }
+            })
+            newState.allFavorites.splice(index, 1)
+            return newState;
         default:
             return state;
-
     }
 }
 

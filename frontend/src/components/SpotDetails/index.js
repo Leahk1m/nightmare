@@ -13,6 +13,18 @@ function SpotDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spot.objSpots[spotId]);
     const dispatch = useDispatch();
+    let favs = useSelector(state => state.favorites.allFavorites);
+    const userId = useSelector(state => state.session.user.id);
+    const [favId, setFavId] = useState('');
+
+    if(favs[0]) {
+        for(let i = 0; i < favs.length; i++) {
+            let fav = favs[i];
+            if(fav.spotId == spotId && fav.userId == userId) {
+                setFavId(fav.id)
+            }
+        }
+    }
 
     const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -25,8 +37,6 @@ function SpotDetails() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-
-    const userId = useSelector(state => state.session.user.id);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId))
@@ -41,14 +51,14 @@ function SpotDetails() {
 
     const addToFav = (e) => {
         e.preventDefault();
-        dispatch(favActions.addingFavorite({spotId, userId}))
-            .then(() => history.push(`/favorites`))
+        dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
 
     };
 
     const deleteFav = (e) => {
         e.preventDefault();
-        
+        dispatch(favActions.deletingFavorite(favId))
+
     };
 
 
@@ -58,7 +68,7 @@ function SpotDetails() {
         await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log(data)
+
                 if(data && data.errors) setErrors(data.errors);
             })
             .then(() => history.push(`/spots/${spotId}`))
@@ -85,9 +95,17 @@ function SpotDetails() {
                     </div>
 
                     <div className="fav-btn-container">
-                        <button onClick={addToFav} className="spot-detail-fav-btn">
-                            Add to Favorites
-                        </button>
+                        {favId ?
+                            <button onClick={deleteFav} className="spot-detail-unfav-btn">
+                                Unfavorite
+                            </button>
+                            :
+                            <button onClick={addToFav} className="spot-detail-fav-btn">
+                                Add to Favorites
+                            </button>
+
+                        }
+
 
                     </div>
 

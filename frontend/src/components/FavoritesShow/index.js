@@ -25,7 +25,6 @@ function FavoritesShow({ favData }) {
 
     return (
         <div>
-            {console.log(favData)}
 
             {(favData || []).map((favSpot) => (
                 <div className="favSpot-container" key={favSpot.id}>
