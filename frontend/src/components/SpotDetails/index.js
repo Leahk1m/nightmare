@@ -32,6 +32,7 @@ function SpotDetails() {
 
     const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
+    const [showUpdateBtn, setShowUpdateBtn] = useState(false);
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -195,7 +196,10 @@ function SpotDetails() {
 
                     {sessionUser && spot.userId === sessionUser.id ?
                         <div>
-                            <button onClick={() => setShowUpdateForm(true)}>Update Spot</button>
+                            {!showUpdateBtn ?
+                                <button onClick={() => [setShowUpdateForm(true), setShowUpdateBtn(true)]}>Update Spot</button>
+                            : null
+                            }
                             <button onClick={deleteSpot}>Delete Spot</button>
                         </div>
 
