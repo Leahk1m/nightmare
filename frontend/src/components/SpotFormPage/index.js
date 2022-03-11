@@ -30,7 +30,6 @@ function SpotFormPage() {
         await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log(data)
                 if(data && data.errors) setErrors(data.errors);
             })
             .then(() => history.push('/spots'))
@@ -64,6 +63,8 @@ function SpotFormPage() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
+                // maxLength={11}
+                // minLength={5}
                 placeholder="Address"
                 />
 

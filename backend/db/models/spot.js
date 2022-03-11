@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes) => {
   const Spot = sequelize.define('Spot', {
     userId: {
       allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id'
+      },
       type: DataTypes.INTEGER,
     },
     address: {
@@ -36,6 +40,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here
+    Spot.belongsTo(models.User, { foreignKey: 'userId'});
+    Spot.hasMany(models.Favorite, { foreignKey: 'spotId' });
+
   };
   return Spot;
 };

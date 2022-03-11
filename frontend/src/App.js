@@ -8,17 +8,21 @@ import SpotFormPage from "./components/SpotFormPage";
 import HomePage from "./components/HomePage";
 import SpotShow from "./components/SpotShow";
 import SpotDetails from "./components/SpotDetails";
+import FavoritesShow from "./components/FavoritesShow";
 
 import * as sessionActions from "./store/session";
 import * as spotActions from "./store/spot";
+import * as favActions from "./store/favorite";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const spotsData = useSelector(state => state.spot.allSpots)
+  const favData = useSelector(state => state.favorites.allFavorites)
 
   useEffect(() => {
     dispatch(spotActions.getSpots())
+    dispatch(favActions.getFavorites())
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -44,6 +48,9 @@ function App() {
           </Route>
           <Route path="/spots/:spotId">
             <SpotDetails />
+          </Route>
+          <Route path="/favorites">
+            <FavoritesShow favData={favData}/>
           </Route>
         </Switch>
       )}

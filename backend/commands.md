@@ -7,6 +7,9 @@ npx sequelize model:generate --name Spot --attributes userId:integer,address:str
 
 npx sequelize seed:generate --name SpotsSeeds
 
+Favorites Model and Seed -----------------------------
+npx sequelize model:generate --name Favorite --attributes spotId:integer,userId:integer
+
 
 
 DB migrate/undo migrate -----------

@@ -38,6 +38,12 @@ function Navigation({ isLoaded }){
 
         </div>
 
+        <div>
+          <NavLink to="/favorites">
+              My Favorite Spots
+          </NavLink>
+        </div>
+
         {isLoaded && sessionLinks}
     </div>
   );

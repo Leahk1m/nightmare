@@ -5,6 +5,7 @@ import './SpotDetails.css';
 import { getOneSpot, deleteListing } from '../../store/spot';
 
 import * as spotActions from '../../store/spot';
+import * as favActions from '../../store/favorite';
 
 function SpotDetails() {
     const history = useHistory();
@@ -12,6 +13,22 @@ function SpotDetails() {
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spot.objSpots[spotId]);
     const dispatch = useDispatch();
+    let favs = useSelector(state => state.favorites.allFavorites);
+    const userId = useSelector(state => state.session.user.id);
+    // const [favId, setFavId] = useState('');
+
+    let favId;
+    if(favs[0]) {
+        for(let i = 0; i < favs.length; i++) {
+            let fav = favs[i];
+            if(fav.spotId == spotId && fav.userId == userId) {
+                // setFavId(fav.id)
+                favId = fav.id
+            }
+        }
+    }
+
+
 
     const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -25,8 +42,6 @@ function SpotDetails() {
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
 
-    const userId = useSelector(state => state.session.user.id);
-
     useEffect(() => {
         dispatch(getOneSpot(spotId))
 
@@ -38,6 +53,19 @@ function SpotDetails() {
             .then(() => history.push(`/spots`))
     };
 
+    const addToFav = (e) => {
+        e.preventDefault();
+        dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
+            .then(() => history.push('/favorites'))
+    };
+
+    const deleteFav = (e) => {
+        e.preventDefault();
+        dispatch(favActions.deletingFavorite(favId))
+            .then(() => history.push('/favorites'))
+
+    };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,7 +73,7 @@ function SpotDetails() {
         await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log(data)
+
                 if(data && data.errors) setErrors(data.errors);
             })
             .then(() => history.push(`/spots/${spotId}`))
@@ -53,7 +81,7 @@ function SpotDetails() {
     }
 
     return (
-        <div className="spot-detail-container">
+        <div className="update-spot-detail-container">
             { spot ?
                 <div>
                     <h1 className="spot-detail-title">{spot.name}</h1>
@@ -72,9 +100,17 @@ function SpotDetails() {
                     </div>
 
                     <div className="fav-btn-container">
-                        <button onClick={() => setFavorites(true)} className="spot-detail-fav-btn">
-                            Add to Favorites
-                        </button>
+                        {favId ?
+                            <button onClick={deleteFav} className="spot-detail-unfav-btn">
+                                Unfavorite
+                            </button>
+                            :
+                            <button onClick={addToFav} className="spot-detail-fav-btn">
+                                Add to Favorites
+                            </button>
+
+                        }
+
 
                     </div>
 
@@ -143,7 +179,10 @@ function SpotDetails() {
                         placeholder="Image url"
                         />
 
-                        <button className="create-spot-btn" type="submit">Update Spot</button>
+                        <div className="update-spot-btn-container">
+                            <button className="update-spot-btn" type="submit">Update Spot</button>
+
+                        </div>
 
 
                         <ul>
@@ -159,10 +198,6 @@ function SpotDetails() {
                             <button onClick={() => setShowUpdateForm(true)}>Update Spot</button>
                             <button onClick={deleteSpot}>Delete Spot</button>
                         </div>
-
-
-
-
 
                     : null
 

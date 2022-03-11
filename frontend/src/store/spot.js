@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf';
+import { ValidationError } from '../utils/validationError';
 
 const LOAD_SPOTS = 'spot/LOADSPOTS';
 const ADD_SPOT = 'spot/ADDSPOT';
@@ -74,8 +75,26 @@ export const getSpots = () => async (dispatch) => {
         imageUrl
       }),
     });
+    if (!response.ok) {
+        let error;
+        if (response.status === 422) {
+          error = await response.json();
+          throw new ValidationError(error.errors, response.statusText);
+        } else {
+          let errorJSON;
+          error = await response.text();
+          try {
+            // Check if the error is JSON, i.e., from the Spot server. If so,
+            // don't throw error yet or it will be caught by the following catch
+            errorJSON = JSON.parse(error);
+          } catch {
+            // Case if server could not be reached
+            throw new Error(error);
+          }
+          throw new Error(`${errorJSON.title}: ${errorJSON.message}`);
+        }
+      }
     const data = await response.json();
-    // console.log(data)
     dispatch(addSpot(data));
     return response;
   };
@@ -110,7 +129,6 @@ export const getSpots = () => async (dispatch) => {
       })
       if (response.ok) {
         const spot = await response.json();
-        // console.log(spot)
         dispatch(updateOne(spot));
         return spot;
       }
@@ -123,7 +141,6 @@ export const getSpots = () => async (dispatch) => {
 
       if(response.ok) {
           const { id: deletedItemId } = await response.json();
-        //   console.log(deletedItemId)
           dispatch(removeOne(deletedItemId));
           return deletedItemId;
       }
@@ -170,7 +187,6 @@ const spotReducer = (state = initialState, action) => {
                 }
             }
         case UPDATE_ONE:
-            console.log(action.spot)
             newSpot = Object.assign({}, state);
             allSpots = newSpot.allSpots;
             objSpots = newSpot.objSpots;
