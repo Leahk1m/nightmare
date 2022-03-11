@@ -18,8 +18,8 @@ router.post('/', handleValidationErrors, asyncHandler(async(req, res) => {
 
 }));
 
-router.delete('/:id', handleValidationErrors, asyncHandler(async(req, res) => {
-    const fav = Favorite.findByPk(req.params.id);
+router.delete('/:id', asyncHandler(async(req, res) => {
+    const fav = await Favorite.findByPk(req.params.id);
     if(!fav) throw new Error('Cannot find favorite spot');
 
     await Favorite.destroy({ where: {id: fav.id}});
