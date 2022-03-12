@@ -50,3 +50,9 @@
     border-bottom: solid #d7d6d6 1px;
     margin-bottom: 30px;
 }
+
+.signup-btn-in-login-form {
+    color: #ff385c;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}

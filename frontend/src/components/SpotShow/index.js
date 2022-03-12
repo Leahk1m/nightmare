@@ -5,9 +5,9 @@ import './SpotShow.css';
 function SpotShow({ spotsData }) {
     return(
         <div className="whole-container-showpage-spots">
-            {/* <div className="showpage-title-container">
-                <h1 className="showpage-title">Ghost friendly places to stay</h1>
-            </div> */}
+            <div className="showpage-title-container">
+                <h1 className="showpage-title">Ghost Friendly Places to Stay</h1>
+            </div>
             {(spotsData || []).map((spot) => (
                 <div className="indiv-spot-container-showpage" key={spot.id}>
 

@@ -1,0 +1,12 @@
+
+.dancing-pumpkin-man-gif {
+    width: 500px;
+    margin-top: 30px;
+
+}
+
+.plz-login-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
