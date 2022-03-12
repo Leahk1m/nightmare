@@ -40,7 +40,7 @@ const HomePage = () => {
 
 
             <div className="ghost-gif-container">
-                <div classNamr="container-for-three-ghosts">
+                <div className="container-for-three-ghosts">
                     <img className="three-guiding-ghosts"src='https://thumbs.gfycat.com/FavorableDeliciousChuckwalla-size_restricted.gif' alt="ghost-gif"/>
 
                 </div>
