@@ -103,7 +103,7 @@ function SpotDetails() {
                     <div className="fav-btn-container">
                         {favId ?
                             <button onClick={deleteFav} className="spot-detail-unfav-btn">
-                                Unfavorite
+                                Remove from Favorites
                             </button>
                             :
                             <button onClick={addToFav} className="spot-detail-fav-btn">
@@ -117,14 +117,14 @@ function SpotDetails() {
 
                     {showUpdateForm === true ?
                         <div>
-                            <form className="create-spot-form" onSubmit={handleSubmit}>
-                        <div className="create-spot-title">
+                            <form className="update-spot-form" onSubmit={handleSubmit}>
+                        <div className="update-spot-title">
                             <label>
                             Update Your Haunted Listing
                             </label>
                         </div>
 
-                        <input
+                        <input className="update-form-input"
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -132,7 +132,7 @@ function SpotDetails() {
                         placeholder="Name"
                         />
 
-                        <input
+                        <input className="update-form-input"
                         type="text"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
@@ -140,7 +140,7 @@ function SpotDetails() {
                         placeholder="Address"
                         />
 
-                        <input
+                        <input className="update-form-input"
                         type="text"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
@@ -148,7 +148,7 @@ function SpotDetails() {
                         placeholder="City"
                         />
 
-                        <input
+                        <input className="update-form-input"
                         type="text"
                         value={state}
                         onChange={(e) => setState(e.target.value)}
@@ -156,7 +156,7 @@ function SpotDetails() {
                         placeholder="State"
                         />
 
-                        <input
+                        <input className="update-form-input"
                         type="text"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
@@ -164,7 +164,7 @@ function SpotDetails() {
                         placeholder="Country"
                         />
 
-                        <input
+                        <input className="update-form-input"
                         type="number"
                         value={price}
                         onChange={(e) => setPrice(+e.target.value)}
@@ -172,7 +172,7 @@ function SpotDetails() {
                         placeholder="Price"
                         />
 
-                        <input
+                        <input className="update-form-input"
                         type="text"
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
@@ -195,7 +195,7 @@ function SpotDetails() {
                     }
 
                     {sessionUser && spot.userId === sessionUser.id ?
-                        <div>
+                        <div className="update-and-delete-form-btns">
                             {!showUpdateBtn ?
                                 <button onClick={() => [setShowUpdateForm(true), setShowUpdateBtn(true)]}>Update Spot</button>
                             : null

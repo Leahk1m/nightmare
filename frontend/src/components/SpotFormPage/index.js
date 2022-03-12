@@ -19,8 +19,6 @@ function SpotFormPage() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-    // const [created, setCreated] = useState(false);
-
 
     const userId = useSelector(state => state.session.user.id);
 
@@ -33,12 +31,7 @@ function SpotFormPage() {
                 if(data && data.errors) setErrors(data.errors);
             })
             .then(() => history.push('/spots'))
-
     }
-
-    // if(created === true) return (
-    //     <Redirect to="/spots" />
-    // );
 
     return(
         <div className="create-form-container">
@@ -63,8 +56,6 @@ function SpotFormPage() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
-                // maxLength={11}
-                // minLength={5}
                 placeholder="Address"
                 />
 
