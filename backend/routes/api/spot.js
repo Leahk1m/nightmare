@@ -5,7 +5,18 @@ const { Spot } = require('../../db/models');
 
 const router = express.Router();
 
+// const { check } = require('express-validator');
+// const { handleValidationErrors } = require('../../utils/validation');
+
 const spotValidations = require('../../validations/spot');
+
+// const validateSpot = [
+//     check('name')
+//         .exists({ checkFalsy: true })
+//         .notEmpty()
+//         .withMessage('Please provide a valid name.'),
+
+// ];
 
 router.get('/', asyncHandler(async(_req, res) => {
     const spots = await Spot.findAll();
@@ -16,6 +27,7 @@ router.post('/', spotValidations.validateCreate, asyncHandler(async(req, res) =>
     const details = req.body;
 
     const spot = await Spot.create(details);
+    // console.log(spot);
     res.json(spot)
     // return res.redirect('/');
 

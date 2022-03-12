@@ -76,6 +76,7 @@ export const getSpots = () => async (dispatch) => {
       }),
     });
     if (!response.ok) {
+        // console.log("im in the reducer")
         let error;
         if (response.status === 422) {
           error = await response.json();

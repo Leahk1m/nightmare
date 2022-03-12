@@ -9,6 +9,9 @@ import HomePage from "./components/HomePage";
 import SpotShow from "./components/SpotShow";
 import SpotDetails from "./components/SpotDetails";
 import FavoritesShow from "./components/FavoritesShow";
+import MySpots from "./components/MySpots";
+import MissingPage from "./components/MissingPage";
+import PlzLogIn from "./components/PlzLogIn";
 
 import * as sessionActions from "./store/session";
 import * as spotActions from "./store/spot";
@@ -19,6 +22,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const spotsData = useSelector(state => state.spot.allSpots)
   const favData = useSelector(state => state.favorites.allFavorites)
+  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(spotActions.getSpots())
@@ -49,8 +53,24 @@ function App() {
           <Route path="/spots/:spotId">
             <SpotDetails />
           </Route>
-          <Route path="/favorites">
-            <FavoritesShow favData={favData}/>
+          { sessionUser ?
+            <Route path="/favorites">
+              <FavoritesShow favData={favData}/>
+            </Route>
+          : <Route>
+              <PlzLogIn/>
+            </Route>
+          }
+          {sessionUser ?
+            <Route path="/myspots">
+              <MySpots spotsData={spotsData}/>
+            </Route>
+          : <Route>
+              <PlzLogIn/>
+            </Route>
+          }
+          <Route path="/">
+            <MissingPage/>
           </Route>
         </Switch>
       )}

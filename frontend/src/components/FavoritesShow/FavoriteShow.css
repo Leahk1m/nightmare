@@ -1,21 +1,43 @@
 .fav-spot-img {
-    width: 100%;
+    height: 250px;
+    border-radius: 15px;
 }
 
 .favSpot-container {
     display: flex;
     justify-content: center;
     flex-direction: column-reverse;
-    flex-wrap: wrap;
     margin: 20px;
     width: 400px;
-    height: 400px;
 }
 
 .fav-show-container {
     display: flex;
     align-items: center;
     align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.cute-bat-gif {
+    width: 15%;
+}
+
+.all-fav-spots-container {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.fav-spot-title-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }

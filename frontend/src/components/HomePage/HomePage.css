@@ -53,7 +53,35 @@
     justify-content: center;
 }
 
+
+.container-for-three-ghosts {
+    display: flex;
+}
+
 .ghost-gif-container {
-    background-image: url("https://media.istockphoto.com/vectors/cute-cartoon-ghost-pattern-vector-id487774484?k=20&m=487774484&s=612x612&w=0&h=t5xuMSgE1fG3mWehgrB9TmijuOX_0VRk0KGBlr0FJ4w=");
-    opacity: 1;
+    border: 1px solid black;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.welcome-to-nightmare-desc {
+    padding-left: 80px;
+
+}
+
+.sleep-ghost-town-div {
+    display: flex;
+    margin-left: 350px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.ghost-town-desc {
+    font-size: 25px;
+    width: 50%;
+    margin-left: 11%;
 }

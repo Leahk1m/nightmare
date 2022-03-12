@@ -57,3 +57,11 @@
     width: 90%;
     margin-left: 3%;
 }
+
+.create-spot-form-create-listing-title {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.create-spot-title {
+    padding-top: 10px;
+}

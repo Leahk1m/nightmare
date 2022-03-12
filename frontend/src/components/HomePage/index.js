@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './HomePage.css';
 const HomePage = () => {
     return(
@@ -18,8 +19,16 @@ const HomePage = () => {
             </div>
 
             <div className="white-box-bg">
-                <h2 className="sleep-in-ghost-town-title">Sleep in a Ghost Town</h2>
-                <h3>In the heart of a desolate Utah desert, the Cisco ghost town invites brave travelers to come and stay awhile.</h3>
+                <div className="sleep-ghost-town-div">
+                    <h1 className="sleep-in-ghost-town-title">Sleep in a Ghost Town</h1>
+                    <p className="ghost-town-desc">In the heart of a desolate Utah desert, the Cisco ghost town invites brave travelers to come and stay awhile.</p>
+
+                </div>
+
+
+
+
+
                 <div className="splashpage-more-homes">
                     <img className="ghost-town-img" src="https://a0.muscache.com/im/pictures/fdc1904c-334e-45ee-866d-64c800711f6c.jpg?im_w=480" alt="scary-pic-1"/>
 
@@ -40,8 +49,23 @@ const HomePage = () => {
 
 
             <div className="ghost-gif-container">
-                <img src='https://data.whicdn.com/images/254365705/original.gif' alt="ghost-gif"/>
+                <div className="container-for-three-ghosts">
+                    <Link to="/spots">
+                        <img className="three-guiding-ghosts"src='https://thumbs.gfycat.com/FavorableDeliciousChuckwalla-size_restricted.gif' alt="ghost-gif"/>
+
+                    </Link>
+                </div>
+
+                <div className="welcome-to-nightmare-desc">
+                    <h1>BOO!</h1>
+                    <h3>Welcome to Nightmarebnb, we hope you find
+                        <br/> the scariest spots for your spooky needs.</h3>
+                    <h4>Let us guide you to all of our ghost-friendly stays.
+                        <br/>Click on us to explore all of our available haunted listings.</h4>
+
+                </div>
             </div>
+
 
         </div>
     );

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
-// import * as sessionActions from '../../store/session';
 import './SpotForm.css';
 
 
 function SpotFormPage() {
     const dispatch = useDispatch();
-    // const spots = useSelector(state => state.spot.spots);
-    // const sessionUser = useSelector(state => state.session.user);
+
     const history = useHistory();
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -19,8 +17,7 @@ function SpotFormPage() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-    // const [created, setCreated] = useState(false);
-
+    const [spotMade, setSpotMade] = useState(false);
 
     const userId = useSelector(state => state.session.user.id);
 
@@ -30,22 +27,25 @@ function SpotFormPage() {
         await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
-                if(data && data.errors) setErrors(data.errors);
-            })
-            .then(() => history.push('/spots'))
+                if(data && data.errors) {
+                    setErrors(data.errors)
+                } else {
+                    setSpotMade(true)
 
+                }
+            })
     }
 
-    // if(created === true) return (
-    //     <Redirect to="/spots" />
-    // );
+    if (spotMade === true) {
+        history.push('/spots')
+    }
 
     return(
         <div className="create-form-container">
 
             <form className="create-spot-form" onSubmit={handleSubmit}>
                 <div className="create-spot-title">
-                    <label>
+                    <label className="create-spot-form-create-listing-title">
                     Create a Haunted Listing
                     </label>
                 </div>
@@ -63,8 +63,6 @@ function SpotFormPage() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
-                // maxLength={11}
-                // minLength={5}
                 placeholder="Address"
                 />
 

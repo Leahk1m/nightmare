@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -42,7 +42,7 @@ function LoginFormPage() {
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="login-or-signup-title">
         <label>
-          Log in or sign up
+          Log in or <Link className="signup-btn-in-login-form"to="signup">Sign up</Link>
         </label>
       </div>
 

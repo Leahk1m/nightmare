@@ -1,0 +1,58 @@
+.my-spots-pg-img {
+    width: 400px;
+    height: 250px;
+    border-radius: 15px;
+
+}
+
+.my-spots-page-container {
+    width: 100%;
+}
+
+.my-spots-pg-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-spots-pg-flying-ghosts {
+    width: 200px;
+    position: relative;
+}
+
+.flying-ghost-container {
+    position: absolute;
+}
+
+.my-spots-pg-title {
+    position: absolute;
+}
+
+.all-of-my-spots {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 85px;
+}
+
+.my-spot-show-container {
+    width: 25%;
+}
+
+.location-details {
+    font-weight: bold;
+}
+
+.my-spot-description {
+    display: flex;
+    align-items: center;
+    gap: 48%;
+    height: 10px
+}
+
+.my-spotname {
+    margin-left: 10px;
+}

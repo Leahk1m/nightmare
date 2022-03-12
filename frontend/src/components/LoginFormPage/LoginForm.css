@@ -10,6 +10,7 @@
     align-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 40px;
 
 }
 
@@ -49,4 +50,10 @@
     font-weight: bold;
     border-bottom: solid #d7d6d6 1px;
     margin-bottom: 30px;
+}
+
+.signup-btn-in-login-form {
+    color: #ff385c;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
