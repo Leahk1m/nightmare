@@ -74,14 +74,18 @@
 }
 
 .sleep-ghost-town-div {
-    display: flex;
-    margin-left: 350px;
     align-items: center;
+    display: flex;
     margin-bottom: 80px;
+    width: 100%;
+    align-content: center;
+    gap: 9%;
+    justify-content: center;
 }
 
 .ghost-town-desc {
     font-size: 25px;
-    width: 50%;
-    margin-left: 11%;
+    /* margin-left: 6%; */
+    width: 700px;
+    margin-right: -3%;
 }
