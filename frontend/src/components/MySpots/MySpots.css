@@ -1,0 +1,31 @@
+.my-spots-pg-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+}
+
+.my-spots-page-container div {
+    width: 400px;
+}
+
+.my-spots-pg-flying-ghosts {
+    width: 150px;
+}
+
+.flying-ghost-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.my-spots-pg-title {
+    display: flex;
+    justify-content: center;
+}
+
+.my-spots-pg-title-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+}

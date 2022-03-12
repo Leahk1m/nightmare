@@ -55,7 +55,7 @@ function App() {
             <FavoritesShow favData={favData}/>
           </Route>
           <Route path="/myspots">
-            <MySpots/>
+            <MySpots spotsData={spotsData}/>
           </Route>
           <Route path="/">
             <MissingPage/>
