@@ -1,6 +1,6 @@
 .my-spots-pg-img {
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 250px;
     border-radius: 15px;
 
 }
@@ -51,4 +51,8 @@
     align-items: center;
     gap: 48%;
     height: 10px
+}
+
+.my-spotname {
+    margin-left: 10px;
 }

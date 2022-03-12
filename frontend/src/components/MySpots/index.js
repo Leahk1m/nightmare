@@ -15,7 +15,7 @@ function MySpots({ spotsData }) {
             <div className="all-of-my-spots">
                 {myOwnSpots.map((spot) => (
                     <div key={spot.id} className="my-spot-show-container">
-                        <h3>{spot.name}</h3>
+                        <h3 className="my-spotname">{spot.name}</h3>
                         <Link to={`/spots/${spot.id}`}>
                             <img className="my-spots-pg-img" src={spot.imageUrl}/>
                         </Link>
