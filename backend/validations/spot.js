@@ -33,7 +33,7 @@ const name = check('name')
     .notEmpty()
     .withMessage('Name cannot be empty')
     .isLength({ min: 5, max: 50 })
-    .withMessage('Name must have 5 characters or longer');
+    .withMessage('Name must have a minimum of 5 characters');
 const price = check('price')
     .notEmpty()
     .withMessage('Price cannot be empty')
