@@ -12,31 +12,37 @@ const userId = check('userId')
 const address = check('address')
     .notEmpty()
     .withMessage('Address cannot be empty')
-    .isLength({ min: 10, max: 100 });
+    .isLength({ min: 10, max: 100 })
+    .withMessage('Address must have a minimum of 10 characters');
 const city = check('city')
     .notEmpty()
     .withMessage('City cannot be empty')
-    .isLength({ min: 5, max: 50 });
+    .isLength({ min: 5, max: 20 })
+    .withMessage('City must have a minimum of 5 characters');
 const state = check('state')
     .notEmpty()
     .withMessage('State cannot be empty')
-    .isLength({ min: 5, max: 50 });
+    .isLength({ min: 4, max: 20 })
+    .withMessage('State must have a minimum of 4 characters');
 const country = check('country')
     .notEmpty()
     .withMessage('Country cannot be empty')
-    .isLength({ min: 5, max: 50 });
+    .isLength({ min: 5, max: 20 })
+    .withMessage('Country must have a minimum of 5 characters');
 const name = check('name')
     .notEmpty()
     .withMessage('Name cannot be empty')
-    .isLength({ min: 5, max: 50 });
+    .isLength({ min: 5, max: 50 })
+    .withMessage('Name must have 5 characters or longer');
 const price = check('price')
     .notEmpty()
-    .withMessage('City cannot be empty')
+    .withMessage('Price cannot be empty')
     .isInt();
 const imageUrl = check('imageUrl')
     .notEmpty()
     .withMessage('ImageUrl cannot be empty')
-    .isURL({ require_protocol: false, require_host: false });
+    .isURL({ require_protocol: false, require_host: false })
+    .withMessage('Please input a proper url');
 
 
 exports.validateCreate = [
@@ -47,7 +53,8 @@ exports.validateCreate = [
     country,
     name,
     price,
-    imageUrl
+    imageUrl,
+    handleValidationErrors
 ];
 
 
@@ -60,5 +67,6 @@ exports.validateUpdate = [
     country,
     name,
     price,
-    imageUrl
+    imageUrl,
+    handleValidationErrors
 ];
