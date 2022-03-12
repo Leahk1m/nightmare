@@ -16,7 +16,7 @@
 }
 
 .my-spots-pg-flying-ghosts {
-    width: 150px;
+    width: 200px;
     position: relative;
 }
 
@@ -40,4 +40,15 @@
 
 .my-spot-show-container {
     width: 25%;
+}
+
+.location-details {
+    font-weight: bold;
+}
+
+.my-spot-description {
+    display: flex;
+    align-items: center;
+    gap: 48%;
+    height: 10px
 }

@@ -72,3 +72,16 @@
     padding-left: 80px;
 
 }
+
+.sleep-ghost-town-div {
+    display: flex;
+    margin-left: 350px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.ghost-town-desc {
+    font-size: 25px;
+    width: 50%;
+    margin-left: 11%;
+}

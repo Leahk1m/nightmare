@@ -13,19 +13,22 @@ function FavoritesShow({ favData }) {
 
     return (
         <div className="fav-show-container">
-            <div>
-                <h1 className="spots-i-would-haunt-title">Spots That I would Haunt as a Ghost </h1>
-                <img className="in-love-ghost-pic" src="https://c.tenor.com/FZAf7pZFFh0AAAAC/blushing-ghost.gif" alt="in-love-ghost"/>
+            <div className="fav-spot-title-container">
+                <h1 className="spots-i-would-haunt-title">Spots that I would haunt as a ghost... </h1>
+                <img className="cute-bat-gif" src="https://64.media.tumblr.com/245d476db2fe828950eac6b367a8e1a3/tumblr_nwjixdTx2p1s5kid8o1_500.gifv" alt="bat-gif"/>
 
             </div>
-            {(favData || []).map((favSpot) => (
-                <div className="favSpot-container" key={favSpot.id}>
-                    <h3>{spots[favSpot.spotId].name}</h3>
-                    <Link to={`/spots/${favSpot.spotId}`}>
-                        <img className="fav-spot-img" src={spots[favSpot.spotId].imageUrl}/>
-                    </Link>
-                </div>
-            ))}
+
+            <div className="all-fav-spots-container">
+                {(favData || []).map((favSpot) => (
+                    <div className="favSpot-container" key={favSpot.id}>
+                        <h4>{spots[favSpot.spotId].name}</h4>
+                        <Link to={`/spots/${favSpot.spotId}`}>
+                            <img className="fav-spot-img" src={spots[favSpot.spotId].imageUrl}/>
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </div>
 
     );

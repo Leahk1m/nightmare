@@ -20,8 +20,11 @@ function MySpots({ spotsData }) {
                             <img className="my-spots-pg-img" src={spot.imageUrl}/>
                         </Link>
 
-                        <h4>Location: {spot.city} {spot.state} {spot.country}</h4>
-                        <h4>${spot.price} / night</h4>
+                        <p className="location-details">{spot.city}, {spot.state} </p>
+                        <div className="my-spot-description">
+                            <p>{spot.country}</p>
+                            <h4>${spot.price} / night</h4>
+                        </div>
 
                     </div>
                 ))}

@@ -16,14 +16,16 @@
     color: black;
     text-decoration: none;
     margin-left: 30px;
+    font-weight: bold;
 }
 
 .whole-container-showpage-spots {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    margin: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -31,6 +33,21 @@
     margin-left: 30px;
 }
 
+.div-for-the-showpage-div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cute-skele-gif {
+    width: 225px;
+}
+
 .showpage-title-container {
-    
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
