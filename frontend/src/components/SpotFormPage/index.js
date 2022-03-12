@@ -45,7 +45,7 @@ function SpotFormPage() {
 
             <form className="create-spot-form" onSubmit={handleSubmit}>
                 <div className="create-spot-title">
-                    <label>
+                    <label className="create-spot-form-create-listing-title">
                     Create a Haunted Listing
                     </label>
                 </div>
