@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import './MySpots.css';
 function MySpots({ spotsData }) {
@@ -17,7 +17,7 @@ function MySpots({ spotsData }) {
                     <div key={spot.id} className="my-spot-show-container">
                         <h3 className="my-spotname">{spot.name}</h3>
                         <Link to={`/spots/${spot.id}`}>
-                            <img className="my-spots-pg-img" src={spot.imageUrl}/>
+                            <img className="my-spots-pg-img" src={spot.imageUrl} alt="this-is-my-alt"/>
                         </Link>
 
                         <p className="location-details">{spot.city}, {spot.state} </p>
