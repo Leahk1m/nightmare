@@ -14,7 +14,11 @@ function SpotDetails() {
     const spot = useSelector(state => state.spot.objSpots[spotId]);
     const dispatch = useDispatch();
     let favs = useSelector(state => state.favorites.allFavorites);
-    const userId = useSelector(state => state.session.user.id);
+
+    let userId;
+    if(sessionUser) {
+        userId = sessionUser.id;
+    };
 
     let favId;
         for(let i = 0; i < favs.length; i++) {
@@ -49,8 +53,12 @@ function SpotDetails() {
 
     const addToFav = (e) => {
         e.preventDefault();
-        dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
-            .then(() => history.push('/favorites'))
+        if(sessionUser) {
+            dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
+                .then(() => history.push('/favorites'))
+        } else {
+            history.push('/login')
+        }
     };
 
     const deleteFav = (e) => {
