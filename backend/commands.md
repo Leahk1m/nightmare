@@ -2,7 +2,8 @@
 
 Spot Model and Seed-----------------------------------
 
-npx sequelize model:generate --name Spot --attributes userId:integer,address:string,city:string,state:string,country:string,name:string,price:decimal,imageUrl:string
+npx sequelize model:generate --name Spot --attributes userId:integer,address:string,city:string,state:string,country:string,name:string,description:text,price:decimal,imageUrl:string,imageUrlTwo:string,imageUrlThree:string,imageUrlFour:string
+
 
 
 npx sequelize seed:generate --name SpotsSeeds
