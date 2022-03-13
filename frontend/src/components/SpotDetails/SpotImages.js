@@ -28,7 +28,7 @@ function SpotImages({ spot, user }) {
         <div className="images-comp-container">
             {imageCount === 1 ?
                 <div className="one-images-container">
-                    this is one
+                    <img src={imageOne} className="main-photoshow" alt="show-one-pic"/>
                 </div>
             : null
 
@@ -36,7 +36,16 @@ function SpotImages({ spot, user }) {
 
             {imageCount === 2 ?
                 <div className="four-images-container">
-                    this is two
+                    <div className="main-photo-div">
+                        <img src={imageOne} className="main-photo-show" alt="show-two-pics"/>
+
+                    </div>
+
+                    <div>
+                        {
+                            sideImageArr.map((sImg) => (<img src={sImg} className="small-photo-show-two" alt="show-two-pics"/>))
+                        }
+                    </div>
                 </div>
             : null
 
@@ -45,12 +54,12 @@ function SpotImages({ spot, user }) {
             {imageCount === 3 ?
                 <div className="four-images-container">
                     <div className="main-photo-div">
-                        <img src={imageOne} className="main-photo-show"/>
+                        <img src={imageOne} className="main-photo-show" alt="show-three-pics"/>
                     </div>
 
                     <div className="remaining-photos-container">
                         {
-                            sideImageArr.map((sImg) => (<img src={sImg} className="small-photo-show"/>))
+                            sideImageArr.map((sImg) => (<img src={sImg} className="small-photo-show" alt="show-three-pics"/>))
                         }
                     </div>
                 </div>
@@ -61,27 +70,19 @@ function SpotImages({ spot, user }) {
             {imageCount === 4 ?
                 <div className="four-images-container">
                     <div className="main-photo-div">
-                        <img src={imageOne} className="main-photo-show"/>
+                        <img src={imageOne} className="main-photo-show" alt="show-four-pics"/>
                     </div>
                     <div className="remaining-photos-container">
                         {
-                            sideImageArr.map((sImg) => (<img src={sImg} className="small-photo-show"/>))
+                            sideImageArr.map((sImg) => (<img src={sImg} className="small-photo-show" alt="show-four-pics"/>))
                         }
 
-                        {/* <img src={imageThree} className="small-photo-show"/>
-                        <img src={imageFour} className="small-photo-show"/> */}
                     </div>
 
                 </div>
             : null
 
             }
-
-
-
-
-
-
         </div>
     );
 

@@ -8,6 +8,7 @@ import * as spotActions from '../../store/spot';
 import * as favActions from '../../store/favorite';
 
 import SpotImages from './SpotImages';
+import ghostProfilePhoto from '../images/ProfilePictureMaker.png';
 
 function SpotDetails() {
     const history = useHistory();
@@ -105,9 +106,10 @@ function SpotDetails() {
 
                     <div className="spot-detail-city-state-country">
                         <h3>{spot.address} <br/>{spot.city} {spot.state} {spot.country}</h3>
+                        <p className="spot-details-profile-info-p"><img className="ghost-profile-round-pic"src={ghostProfilePhoto} alt="ghost-profile-pic"/>g(hosted) by: {sessionUser.username}</p>
                     </div>
 
-                    <div className="spot-detail-description">
+                    <div className="spot-detail-description-container">
                         <h4>{spot.description}</h4>
 
                     </div>

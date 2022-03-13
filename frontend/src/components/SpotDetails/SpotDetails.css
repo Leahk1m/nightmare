@@ -21,7 +21,7 @@
 
 .spot-detail-city-state-country {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .spot-detail-addy {
@@ -181,4 +181,26 @@
     align-items: center;
     align-content: center;
     width: 100%;
+}
+
+.spot-detail-description-container {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 395px;
+    border-top: 1px solid #8e8c8c;
+    border-bottom: 1px solid #8e8c8c;
+    padding: 20px;
+}
+
+.ghost-profile-round-pic {
+    width: 30px;
+    padding-right: 10px;
+}
+
+.spot-details-profile-info-p {
+    display: flex;
+    align-items: center;
 }
