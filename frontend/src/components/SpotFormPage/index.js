@@ -23,6 +23,9 @@ function SpotFormPage() {
     const [imageUrlThree, setImageUrlThree] = useState('');
     const [imageUrlFour, setImageUrlFour] = useState('');
 
+    const [moreImgs, setMoreImgs] = useState(false);
+    const [moreImgsButton, setMoreImgsButton] = useState(true);
+
     const userId = useSelector(state => state.session.user.id);
 
     const handleSubmit = async (e) => {
@@ -112,26 +115,38 @@ function SpotFormPage() {
                 placeholder="Image url"
                 />
 
-                <input className="update-additional-img"
-                type="text"
-                value={imageUrlTwo}
-                onChange={(e) => setImageUrlTwo(e.target.value)}
-                placeholder="Optional: additional image url"
-                />
+                {moreImgsButton ?
+                    <button className="create-spot-btn" onClick={() => [setMoreImgs(true), setMoreImgsButton(false)]}>Add more images</button>
+                : null
+                }
 
-                <input className="update-additional-img"
-                type="text"
-                value={imageUrlThree}
-                onChange={(e) => setImageUrlThree(e.target.value)}
-                placeholder="Optional: additional image url"
-                />
+                {moreImgs === true ?
+                    <div className="optional-img-container">
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlTwo}
+                        onChange={(e) => setImageUrlTwo(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
 
-                <input className="update-additional-img"
-                type="text"
-                value={imageUrlFour}
-                onChange={(e) => setImageUrlFour(e.target.value)}
-                placeholder="Optional: additional image url"
-                />
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlThree}
+                        onChange={(e) => setImageUrlThree(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlFour}
+                        onChange={(e) => setImageUrlFour(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                    </div>
+                : null
+
+                }
 
 
                 <button className="create-spot-btn" type="submit">Create Spot</button>

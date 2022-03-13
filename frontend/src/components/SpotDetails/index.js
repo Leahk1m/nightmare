@@ -17,6 +17,9 @@ function SpotDetails() {
     const dispatch = useDispatch();
     let favs = useSelector(state => state.favorites.allFavorites);
 
+    const [moreImgs, setMoreImgs] = useState(false);
+    const [moreImgsButton, setMoreImgsButton] = useState(true);
+
     let userId;
     if(sessionUser) {
         userId = sessionUser.id;
@@ -97,10 +100,6 @@ function SpotDetails() {
                     <h1 className="spot-detail-title">{spot.name}</h1>
 
                     <div className="spot-detail-img-container">
-                            {/* <img className="detail-pic" src={spot.imageUrl} alt="spot-details-pic"/>
-                            <img className="detail-pic" src={spot.imageUrlTwo} alt="spot-details-pic-two"/>
-                            <img className="detail-pic" src={spot.imageUrlThree} alt="spot-details-pic-three"/>
-                            <img className="detail-pic" src={spot.imageUrlFour} alt="spot-details-pic-four"/> */}
                             <SpotImages spot={spot} user={sessionUser}/>
                     </div>
 
@@ -112,8 +111,6 @@ function SpotDetails() {
                         <h4>{spot.description}</h4>
 
                     </div>
-
-
 
                     <div className="fav-btn-container">
                         {
@@ -205,26 +202,39 @@ function SpotDetails() {
                         placeholder="Image url"
                         />
 
-                        <input className="update-additional-img"
-                        type="text"
-                        value={imageUrlTwo}
-                        onChange={(e) => setImageUrlTwo(e.target.value)}
-                        placeholder="Optional: additional image url"
-                        />
+                    {moreImgsButton ?
+                        <button className="create-spot-btn" onClick={() => [setMoreImgs(true), setMoreImgsButton(false)]}>Add more images</button>
+                    : null
+                    }
 
-                        <input className="update-additional-img"
-                        type="text"
-                        value={imageUrlThree}
-                        onChange={(e) => setImageUrlThree(e.target.value)}
-                        placeholder="Optional: additional image url"
-                        />
+                    {moreImgs === true ?
+                        <div className="update-more-imgs-container">
+                            <input className="update-additional-img"
+                            type="text"
+                            value={imageUrlTwo}
+                            onChange={(e) => setImageUrlTwo(e.target.value)}
+                            placeholder="Optional: additional image url"
+                            />
 
-                        <input className="update-additional-img"
-                        type="text"
-                        value={imageUrlFour}
-                        onChange={(e) => setImageUrlFour(e.target.value)}
-                        placeholder="Optional: additional image url"
-                        />
+                            <input className="update-additional-img"
+                            type="text"
+                            value={imageUrlThree}
+                            onChange={(e) => setImageUrlThree(e.target.value)}
+                            placeholder="Optional: additional image url"
+                            />
+
+                            <input className="update-additional-img"
+                            type="text"
+                            value={imageUrlFour}
+                            onChange={(e) => setImageUrlFour(e.target.value)}
+                            placeholder="Optional: additional image url"
+                            />
+
+                        </div>
+                    : null
+
+                    }
+
 
                         <div className="update-spot-btn-container">
                             <button className="update-spot-btn" type="submit">Update Spot</button>
