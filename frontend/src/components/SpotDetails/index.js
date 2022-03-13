@@ -15,22 +15,15 @@ function SpotDetails() {
     const dispatch = useDispatch();
     let favs = useSelector(state => state.favorites.allFavorites);
     const userId = useSelector(state => state.session.user.id);
-    // const [favId, setFavId] = useState('');
 
     let favId;
-    if(favs[0]) {
         for(let i = 0; i < favs.length; i++) {
             let fav = favs[i];
-            if(fav.spotId == spotId && fav.userId == userId) {
-                // setFavId(fav.id)
+            if(fav.spotId === +spotId && fav.userId === userId) {
                 favId = fav.id
             }
         }
-    }
 
-
-
-    const [favorites, setFavorites] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
     const [showUpdateBtn, setShowUpdateBtn] = useState(false);
 
@@ -101,15 +94,17 @@ function SpotDetails() {
                     </div>
 
                     <div className="fav-btn-container">
-                        {favId ?
-                            <button onClick={deleteFav} className="spot-detail-unfav-btn">
-                                Remove from Favorites
-                            </button>
+                        {
+                            spot.userId === userId ?
+                            <p>You own this spot</p>
                             :
-                            <button onClick={addToFav} className="spot-detail-fav-btn">
-                                Add to Favorites
-                            </button>
-
+                            (favId ?
+                                <input type="button" onClick={deleteFav} value="♥" className="spot-detail-unfav-btn"
+                                />
+                                :
+                                <input type="button" onClick={addToFav} value="♡" className="spot-detail-fav-btn"
+                                />
+                            )
                         }
 
 

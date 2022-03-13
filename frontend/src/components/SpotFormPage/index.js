@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
 import './SpotForm.css';
 
@@ -17,7 +17,6 @@ function SpotFormPage() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-    const [spotMade, setSpotMade] = useState(false);
 
     const userId = useSelector(state => state.session.user.id);
 
@@ -25,19 +24,13 @@ function SpotFormPage() {
         e.preventDefault();
         setErrors([]);
         await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
+            .then(() => history.push('/spots'))
             .catch(async (res) => {
                 const data = await res.json();
                 if(data && data.errors) {
                     setErrors(data.errors)
-                } else {
-                    setSpotMade(true)
-
                 }
             })
-    }
-
-    if (spotMade === true) {
-        history.push('/spots')
     }
 
     return(

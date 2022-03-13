@@ -27,9 +27,6 @@
     justify-content: center;
 }
 
-.spot-detail-fav-btn {
-
-}
 
 .fav-btn-container {
     display: flex;
@@ -110,4 +107,58 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.update-spot-title {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10;
+}
+
+.spot-detail-fav-btn {
+    color: #000000;
+    background: transparent;
+    font-size: 35px;
+    font-family: 'Roboto',sans-serif;
+    border: none;
+    text-align: center;
+    transition: all 0.2s;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+.spot-detail-fav-btn:hover {
+    color: #ff385c;
+    background: transparent;
+    font-size: 45px;
+    font-family: 'Roboto',sans-serif;
+    border: none;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+.spot-detail-unfav-btn {
+    color: #ff385c;
+    background: transparent;
+    font-size: 35px;
+    font-family: 'Roboto',sans-serif;
+    border: none;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+.spot-detail-unfav-btn:hover {
+    color: #8a8a8a;
+    background: transparent;
+    font-size: 45px;
+    font-family: 'Roboto',sans-serif;
+    border: none;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: all 0.2s;
 }
