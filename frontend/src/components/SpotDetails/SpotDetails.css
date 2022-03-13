@@ -1,6 +1,6 @@
 .detail-pic {
-    width: 800px;
-    height: 500px;
+    width: 400px;
+    height: 250px;
     border-radius: 10px;
     box-shadow: 0px 6px 20px 0px #000000;
 }
@@ -10,6 +10,8 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .spot-detail-title {
@@ -161,4 +163,8 @@
     padding-right: 10px;
     border-radius: 10px;
     transition: all 0.2s;
+}
+
+.spot-detail-description {
+
 }

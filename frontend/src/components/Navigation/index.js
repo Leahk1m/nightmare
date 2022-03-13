@@ -33,7 +33,7 @@ function Navigation({ isLoaded }){
 
         <div className="nav-spots-btn-container">
           <NavLink className="nav-spots-btn"exact to="/spots">
-            Take me to the spots 👻
+            Take me to the spots
           </NavLink>
 
         </div>

@@ -7,6 +7,8 @@ import { getOneSpot, deleteListing } from '../../store/spot';
 import * as spotActions from '../../store/spot';
 import * as favActions from '../../store/favorite';
 
+import SpotImages from './SpotImages';
+
 function SpotDetails() {
     const history = useHistory();
     const { spotId } = useParams();
@@ -89,17 +91,23 @@ function SpotDetails() {
                     <h1 className="spot-detail-title">{spot.name}</h1>
 
                     <div className="spot-detail-img-container">
-                            <img className="detail-pic" src={spot.imageUrl} alt="spot-details-pic"/>
+                            {/* <img className="detail-pic" src={spot.imageUrl} alt="spot-details-pic"/>
+                            <img className="detail-pic" src={spot.imageUrlTwo} alt="spot-details-pic-two"/>
+                            <img className="detail-pic" src={spot.imageUrlThree} alt="spot-details-pic-three"/>
+                            <img className="detail-pic" src={spot.imageUrlFour} alt="spot-details-pic-four"/> */}
+                            <SpotImages spot={spot} user={sessionUser}/>
                     </div>
 
                     <div className="spot-detail-city-state-country">
-                        <h3>{spot.city} {spot.state} {spot.country}</h3>
+                        <h3>{spot.address} <br/>{spot.city} {spot.state} {spot.country}</h3>
                     </div>
 
-                    <div className="spot-detail-addy">
-                        <h4>{spot.address}</h4>
+                    <div className="spot-detail-description">
+                        <h4>{spot.description}</h4>
 
                     </div>
+
+
 
                     <div className="fav-btn-container">
                         {
