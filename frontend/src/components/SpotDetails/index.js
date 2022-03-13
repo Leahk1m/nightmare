@@ -41,6 +41,7 @@ function SpotDetails() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
+    const [description, setDescription] = useState('');
 
     useEffect(() => {
         dispatch(getOneSpot(spotId))
@@ -74,7 +75,7 @@ function SpotDetails() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, imageUrl }))
+        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, description, imageUrl }))
             .catch(async (res) => {
                 const data = await res.json();
 
@@ -182,6 +183,14 @@ function SpotDetails() {
                         required
                         placeholder="Price"
                         />
+
+                        <textarea className="update-spot-form-description-textarea"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                        placeholder="Description"
+                        >
+                        </textarea>
 
                         <input className="update-form-input"
                         type="text"

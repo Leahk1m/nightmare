@@ -114,7 +114,7 @@
 .update-spot-title {
     color: black;
     font-family: 'Montserrat', sans-serif;
-    padding: 10;
+    padding: 10px;
 }
 
 .spot-detail-fav-btn {
@@ -167,4 +167,10 @@
 
 .spot-detail-description {
 
+}
+
+.update-spot-form-description-textarea {
+    width: 444px;
+    height: 250px;
+    margin-bottom: 16px;
 }

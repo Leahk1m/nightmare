@@ -65,3 +65,8 @@
 .create-spot-title {
     padding-top: 10px;
 }
+
+.add-spot-form-description-textarea {
+    width: 327px;
+    height: 115px;
+}

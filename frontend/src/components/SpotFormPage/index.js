@@ -17,13 +17,14 @@ function SpotFormPage() {
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
+    const [description, setDescription] = useState('');
 
     const userId = useSelector(state => state.session.user.id);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
+        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, description, imageUrl }))
             .then(() => history.push('/spots'))
             .catch(async (res) => {
                 const data = await res.json();
@@ -91,6 +92,14 @@ function SpotFormPage() {
                 placeholder="Price"
                 />
 
+                <textarea className="add-spot-form-description-textarea"
+                 value={description}
+                 onChange={(e) => setDescription(e.target.value)}
+                 required
+                 placeholder="Description"
+                >
+                </textarea>
+
                 <input
                 type="text"
                 value={imageUrl}
@@ -145,8 +154,6 @@ function SpotFormPage() {
                             <h3>$600 / night</h3>
                         </div>
                 }
-
-
 
             </div>
         </div>
