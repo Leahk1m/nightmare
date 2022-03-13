@@ -61,7 +61,7 @@ const HomePage = () => {
                     <h3>Welcome to Nightmarebnb, we hope you find
                         <br/> the scariest spots for your spooky needs.</h3>
                     <h4>Let us guide you to all of our ghost-friendly stays.
-                        <br/>Click on us to explore all of our available haunted listings.</h4>
+                        <br/>Click on us (the ghosts) to explore all of our available haunted listings.</h4>
 
                 </div>
             </div>
