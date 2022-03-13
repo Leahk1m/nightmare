@@ -16,15 +16,19 @@ function SpotFormPage() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
-    const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
+
+    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrlTwo, setImageUrlTwo] = useState('');
+    const [imageUrlThree, setImageUrlThree] = useState('');
+    const [imageUrlFour, setImageUrlFour] = useState('');
 
     const userId = useSelector(state => state.session.user.id);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, description, imageUrl }))
+        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, description, imageUrl, imageUrlTwo, imageUrlThree, imageUrlFour }))
             .then(() => history.push('/spots'))
             .catch(async (res) => {
                 const data = await res.json();
@@ -107,6 +111,28 @@ function SpotFormPage() {
                 required
                 placeholder="Image url"
                 />
+
+                <input className="update-additional-img"
+                type="text"
+                value={imageUrlTwo}
+                onChange={(e) => setImageUrlTwo(e.target.value)}
+                placeholder="Optional: additional image url"
+                />
+
+                <input className="update-additional-img"
+                type="text"
+                value={imageUrlThree}
+                onChange={(e) => setImageUrlThree(e.target.value)}
+                placeholder="Optional: additional image url"
+                />
+
+                <input className="update-additional-img"
+                type="text"
+                value={imageUrlFour}
+                onChange={(e) => setImageUrlFour(e.target.value)}
+                placeholder="Optional: additional image url"
+                />
+
 
                 <button className="create-spot-btn" type="submit">Create Spot</button>
 

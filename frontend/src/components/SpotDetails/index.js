@@ -40,8 +40,13 @@ function SpotDetails() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
-    const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
+
+    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrlTwo, setImageUrlTwo] = useState('');
+    const [imageUrlThree, setImageUrlThree] = useState('');
+    const [imageUrlFour, setImageUrlFour] = useState('');
+
 
     useEffect(() => {
         dispatch(getOneSpot(spotId))
@@ -75,7 +80,7 @@ function SpotDetails() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, description, imageUrl }))
+        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, description, imageUrl, imageUrlTwo, imageUrlThree, imageUrlFour }))
             .catch(async (res) => {
                 const data = await res.json();
 
@@ -198,6 +203,27 @@ function SpotDetails() {
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
                         placeholder="Image url"
+                        />
+
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlTwo}
+                        onChange={(e) => setImageUrlTwo(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlThree}
+                        onChange={(e) => setImageUrlThree(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlFour}
+                        onChange={(e) => setImageUrlFour(e.target.value)}
+                        placeholder="Optional: additional image url"
                         />
 
                         <div className="update-spot-btn-container">
