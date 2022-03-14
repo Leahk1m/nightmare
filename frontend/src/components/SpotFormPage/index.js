@@ -16,14 +16,22 @@ function SpotFormPage() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
+    const [description, setDescription] = useState('');
+
     const [imageUrl, setImageUrl] = useState('');
+    const [imageUrlTwo, setImageUrlTwo] = useState('');
+    const [imageUrlThree, setImageUrlThree] = useState('');
+    const [imageUrlFour, setImageUrlFour] = useState('');
+
+    const [moreImgs, setMoreImgs] = useState(false);
+    const [moreImgsButton, setMoreImgsButton] = useState(true);
 
     const userId = useSelector(state => state.session.user.id);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, imageUrl }))
+        await dispatch(spotActions.addListing({ userId, address, city, state, country, name, price, description, imageUrl, imageUrlTwo, imageUrlThree, imageUrlFour }))
             .then(() => history.push('/spots'))
             .catch(async (res) => {
                 const data = await res.json();
@@ -91,6 +99,14 @@ function SpotFormPage() {
                 placeholder="Price"
                 />
 
+                <textarea className="add-spot-form-description-textarea"
+                 value={description}
+                 onChange={(e) => setDescription(e.target.value)}
+                 required
+                 placeholder="Description"
+                >
+                </textarea>
+
                 <input
                 type="text"
                 value={imageUrl}
@@ -98,6 +114,40 @@ function SpotFormPage() {
                 required
                 placeholder="Image url"
                 />
+
+                {moreImgsButton ?
+                    <button className="create-spot-btn" onClick={() => [setMoreImgs(true), setMoreImgsButton(false)]}>Add more images</button>
+                : null
+                }
+
+                {moreImgs === true ?
+                    <div className="optional-img-container">
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlTwo}
+                        onChange={(e) => setImageUrlTwo(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlThree}
+                        onChange={(e) => setImageUrlThree(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                        <input className="update-additional-img"
+                        type="text"
+                        value={imageUrlFour}
+                        onChange={(e) => setImageUrlFour(e.target.value)}
+                        placeholder="Optional: additional image url"
+                        />
+
+                    </div>
+                : null
+
+                }
+
 
                 <button className="create-spot-btn" type="submit">Create Spot</button>
 
@@ -145,8 +195,6 @@ function SpotFormPage() {
                             <h3>$600 / night</h3>
                         </div>
                 }
-
-
 
             </div>
         </div>

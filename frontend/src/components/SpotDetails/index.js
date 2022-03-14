@@ -7,6 +7,9 @@ import { getOneSpot, deleteListing } from '../../store/spot';
 import * as spotActions from '../../store/spot';
 import * as favActions from '../../store/favorite';
 
+import SpotImages from './SpotImages';
+import ghostProfilePhoto from '../images/ProfilePictureMaker.png';
+
 function SpotDetails() {
     const history = useHistory();
     const { spotId } = useParams();
@@ -14,7 +17,14 @@ function SpotDetails() {
     const spot = useSelector(state => state.spot.objSpots[spotId]);
     const dispatch = useDispatch();
     let favs = useSelector(state => state.favorites.allFavorites);
-    const userId = useSelector(state => state.session.user.id);
+
+    const [moreImgs, setMoreImgs] = useState(false);
+    const [moreImgsButton, setMoreImgsButton] = useState(true);
+
+    let userId;
+    if(sessionUser) {
+        userId = sessionUser.id;
+    };
 
     let favId;
         for(let i = 0; i < favs.length; i++) {
@@ -34,7 +44,13 @@ function SpotDetails() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [errors, setErrors] = useState([]);
+    const [description, setDescription] = useState('');
+
     const [imageUrl, setImageUrl] = useState('');
+    const [imageUrlTwo, setImageUrlTwo] = useState('');
+    const [imageUrlThree, setImageUrlThree] = useState('');
+    const [imageUrlFour, setImageUrlFour] = useState('');
+
 
     useEffect(() => {
         dispatch(getOneSpot(spotId))
@@ -49,8 +65,12 @@ function SpotDetails() {
 
     const addToFav = (e) => {
         e.preventDefault();
-        dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
-            .then(() => history.push('/favorites'))
+        if(sessionUser) {
+            dispatch(favActions.addingFavorite({spotId, userId})) //send as obj if it's more than one thing
+                .then(() => history.push('/favorites'))
+        } else {
+            history.push('/login')
+        }
     };
 
     const deleteFav = (e) => {
@@ -64,7 +84,7 @@ function SpotDetails() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, imageUrl }))
+        await dispatch(spotActions.updateSpot({ spotId, userId, address, city, state, country, name, price, description, imageUrl, imageUrlTwo, imageUrlThree, imageUrlFour }))
             .catch(async (res) => {
                 const data = await res.json();
 
@@ -77,19 +97,20 @@ function SpotDetails() {
     return (
         <div className="update-spot-detail-container">
             { spot ?
-                <div>
+                <div className="all-details-container">
                     <h1 className="spot-detail-title">{spot.name}</h1>
 
                     <div className="spot-detail-img-container">
-                            <img className="detail-pic" src={spot.imageUrl} alt="spot-details-pic"/>
+                            <SpotImages spot={spot} user={sessionUser}/>
                     </div>
 
                     <div className="spot-detail-city-state-country">
-                        <h3>{spot.city} {spot.state} {spot.country}</h3>
+                        <h3>{spot.address} <br/>{spot.city} {spot.state} {spot.country}</h3>
+                        <p className="spot-details-profile-info-p"><img className="ghost-profile-round-pic"src={ghostProfilePhoto} alt="ghost-profile-pic"/>g(hosted) by: scarylandlord</p>
                     </div>
 
-                    <div className="spot-detail-addy">
-                        <h4>{spot.address}</h4>
+                    <div className="spot-detail-description-container">
+                        <p>{spot.description}</p>
 
                     </div>
 
@@ -167,6 +188,14 @@ function SpotDetails() {
                         placeholder="Price"
                         />
 
+                        <textarea className="update-spot-form-description-textarea"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                        placeholder="Description"
+                        >
+                        </textarea>
+
                         <input className="update-form-input"
                         type="text"
                         value={imageUrl}
@@ -174,6 +203,40 @@ function SpotDetails() {
                         required
                         placeholder="Image url"
                         />
+
+                    {moreImgsButton ?
+                        <button className="create-spot-btn" onClick={() => [setMoreImgs(true), setMoreImgsButton(false)]}>Add more images</button>
+                    : null
+                    }
+
+                    {moreImgs === true ?
+                        <div className="update-more-imgs-container">
+                            <input className="update-additional-img"
+                            type="text"
+                            value={imageUrlTwo}
+                            onChange={(e) => setImageUrlTwo(e.target.value)}
+                            placeholder="Optional: additional image url"
+                            />
+
+                            <input className="update-additional-img"
+                            type="text"
+                            value={imageUrlThree}
+                            onChange={(e) => setImageUrlThree(e.target.value)}
+                            placeholder="Optional: additional image url"
+                            />
+
+                            <input className="update-additional-img"
+                            type="text"
+                            value={imageUrlFour}
+                            onChange={(e) => setImageUrlFour(e.target.value)}
+                            placeholder="Optional: additional image url"
+                            />
+
+                        </div>
+                    : null
+
+                    }
+
 
                         <div className="update-spot-btn-container">
                             <button className="update-spot-btn" type="submit">Update Spot</button>

@@ -1,6 +1,6 @@
 .detail-pic {
-    width: 800px;
-    height: 500px;
+    width: 400px;
+    height: 250px;
     border-radius: 10px;
     box-shadow: 0px 6px 20px 0px #000000;
 }
@@ -10,6 +10,9 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
 }
 
 .spot-detail-title {
@@ -19,7 +22,8 @@
 
 .spot-detail-city-state-country {
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .spot-detail-addy {
@@ -49,6 +53,7 @@
     color:#000000;
     text-align:center;
     transition: all 0.2s;
+    margin-bottom: 10px;
 }
 
 .update-spot-detail-container button:hover {
@@ -70,6 +75,7 @@
     color:#000000;
     text-align:center;
     transition: all 0.2s;
+    margin-bottom: 13px;
 }
 
 .create-spot-btn:hover {
@@ -81,7 +87,6 @@
 .update-spot-form {
     display: flex;
     width: 500px;
-    height: 500px;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid grey;
@@ -112,7 +117,7 @@
 .update-spot-title {
     color: black;
     font-family: 'Montserrat', sans-serif;
-    padding: 10;
+    padding: 10px;
 }
 
 .spot-detail-fav-btn {
@@ -161,4 +166,60 @@
     padding-right: 10px;
     border-radius: 10px;
     transition: all 0.2s;
+}
+
+
+.update-spot-form-description-textarea {
+    width: 444px;
+    height: 89px;
+    margin-bottom: 16px;
+}
+
+.update-more-imgs-container {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.spot-detail-description-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 20px;
+}
+
+.ghost-profile-round-pic {
+    width: 30px;
+    padding-right: 10px;
+}
+
+.spot-details-profile-info-p {
+    display: flex;
+    align-items: center;
+}
+
+.spot-detail-description-container p {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 45px;
+    width: 65%;
+    text-align: center;
+}
+
+.update-spot-detail-container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.all-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }

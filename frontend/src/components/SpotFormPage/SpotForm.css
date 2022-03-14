@@ -6,6 +6,7 @@
     justify-content: center;
     gap: 100px;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .create-spot-form {
@@ -64,4 +65,23 @@
 
 .create-spot-title {
     padding-top: 10px;
+}
+
+.add-spot-form-description-textarea {
+    width: 327px;
+    height: 115px;
+}
+
+.update-additional-img {
+    width: 80%;
+    height: 30px;
+}
+
+.optional-img-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
 }

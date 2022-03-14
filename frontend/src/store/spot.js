@@ -58,7 +58,7 @@ export const getSpots = () => async (dispatch) => {
 
 
   export const addListing = (spot) => async (dispatch) => {
-    const { userId, address, city, state, country, name, price, imageUrl } = spot;
+    const { userId, address, city, state, country, name, price, description, imageUrl, imageUrlTwo, imageUrlThree, imageUrlFour } = spot;
     const response = await csrfFetch('/api/spots', {
       method: 'POST',
       headers: {
@@ -72,7 +72,11 @@ export const getSpots = () => async (dispatch) => {
         country,
         name,
         price,
-        imageUrl
+        description,
+        imageUrl,
+        imageUrlTwo,
+        imageUrlThree,
+        imageUrlFour
       }),
     });
     if (!response.ok) {
@@ -110,7 +114,7 @@ export const getSpots = () => async (dispatch) => {
   };
 
   export const updateSpot = spot => async dispatch => {
-    const { spotId, userId, address, city, state, country, name, price, imageUrl } = spot;
+    const { spotId, userId, address, city, state, country, name, price, description, imageUrl, imageUrlTwo, imageUrlThree, imageUrlFour } = spot;
       const response = await csrfFetch(`/api/spots/${userId}`, {
           method: 'PUT',
           headers: {
@@ -125,7 +129,11 @@ export const getSpots = () => async (dispatch) => {
             country,
             name,
             price,
-            imageUrl
+            description,
+            imageUrl,
+            imageUrlTwo,
+            imageUrlThree,
+            imageUrlFour
           })
       })
       if (response.ok) {

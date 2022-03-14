@@ -29,12 +29,28 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(50),
     },
+    description: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
     price: {
       allowNull: false,
       type: DataTypes.DECIMAL,
     },
     imageUrl: {
       allowNull: false,
+      type: DataTypes.STRING
+    },
+    imageUrlTwo: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    imageUrlThree: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    imageUrlFour: {
+      allowNull: true,
       type: DataTypes.STRING
     }
   }, {});

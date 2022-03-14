@@ -36,12 +36,28 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(50)
       },
+      description: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
       price: {
         allowNull: false,
         type: Sequelize.DECIMAL
       },
       imageUrl: {
         allowNull: false,
+        type: Sequelize.STRING
+      },
+      imageUrlTwo: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      imageUrlThree: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      imageUrlFour: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       createdAt: {

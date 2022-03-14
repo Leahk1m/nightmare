@@ -38,11 +38,17 @@ const price = check('price')
     .notEmpty()
     .withMessage('Price cannot be empty')
     .isInt();
+const description = check('description')
+    .notEmpty()
+    .withMessage('Description cannot be empty')
+    .isLength({ min: 50 })
+    .withMessage('Description must have at least 50 characters')
 const imageUrl = check('imageUrl')
     .notEmpty()
     .withMessage('ImageUrl cannot be empty')
     .isURL({ require_protocol: false, require_host: false })
     .withMessage('Please input a proper url');
+
 
 
 exports.validateCreate = [
@@ -54,6 +60,7 @@ exports.validateCreate = [
     name,
     price,
     imageUrl,
+    description,
     handleValidationErrors
 ];
 
@@ -68,5 +75,6 @@ exports.validateUpdate = [
     name,
     price,
     imageUrl,
+    description,
     handleValidationErrors
 ];
