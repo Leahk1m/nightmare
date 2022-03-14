@@ -12,6 +12,7 @@
     align-content: center;
     flex-wrap: wrap;
     flex-direction: row;
+    width: 100%;
 }
 
 .spot-detail-title {
@@ -21,6 +22,7 @@
 
 .spot-detail-city-state-country {
     display: flex;
+    width: 100%;
     justify-content: space-around;
 }
 
@@ -185,13 +187,10 @@
 
 .spot-detail-description-container {
     display: flex;
-    width: 50%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     align-content: center;
-    margin-left: 395px;
-    border-top: 1px solid #8e8c8c;
-    border-bottom: 1px solid #8e8c8c;
     padding: 20px;
 }
 
@@ -202,5 +201,25 @@
 
 .spot-details-profile-info-p {
     display: flex;
+    align-items: center;
+}
+
+.spot-detail-description-container p {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 45px;
+    width: 65%;
+    text-align: center;
+}
+
+.update-spot-detail-container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.all-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     align-items: center;
 }

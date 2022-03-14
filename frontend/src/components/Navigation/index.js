@@ -39,7 +39,7 @@ function Navigation({ isLoaded }){
         </div>
 
         <div>
-          <NavLink className="my-spots-link-nav" path to="/myspots">My Spots</NavLink>
+          <NavLink className="my-spots-link-nav" to="/myspots">My Spots</NavLink>
         </div>
 
         <div>

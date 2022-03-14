@@ -22,7 +22,6 @@
 }
 .main-photo-show {
     width: 100%;
-    height: 549px;
 }
 
 .remaining-photos-container {
@@ -36,5 +35,35 @@
 
 .small-photo-show-two {
     width: 100%;
-    height: 456px;
+}
+
+.two-images-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-direction: row;
+    width: 70%;
+}
+
+.two-images-second-container {
+    /* display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-direction: row; */
+    width: 40%;
+}
+
+.two-main-photo-show {
+    width: 100%;
+}
+
+.one-images-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-photoshow {
+    height: 500px;
+    width: 65%;
 }

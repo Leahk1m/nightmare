@@ -97,7 +97,7 @@ function SpotDetails() {
     return (
         <div className="update-spot-detail-container">
             { spot ?
-                <div>
+                <div className="all-details-container">
                     <h1 className="spot-detail-title">{spot.name}</h1>
 
                     <div className="spot-detail-img-container">
@@ -106,11 +106,11 @@ function SpotDetails() {
 
                     <div className="spot-detail-city-state-country">
                         <h3>{spot.address} <br/>{spot.city} {spot.state} {spot.country}</h3>
-                        <p className="spot-details-profile-info-p"><img className="ghost-profile-round-pic"src={ghostProfilePhoto} alt="ghost-profile-pic"/>g(hosted) by: {sessionUser.username}</p>
+                        <p className="spot-details-profile-info-p"><img className="ghost-profile-round-pic"src={ghostProfilePhoto} alt="ghost-profile-pic"/>g(hosted) by: scarylandlord</p>
                     </div>
 
                     <div className="spot-detail-description-container">
-                        <h4>{spot.description}</h4>
+                        <p>{spot.description}</p>
 
                     </div>
 
