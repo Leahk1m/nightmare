@@ -199,7 +199,12 @@ const spotReducer = (state = initialState, action) => {
             newSpot = Object.assign({}, state);
             allSpots = newSpot.allSpots;
             objSpots = newSpot.objSpots;
-            allSpots[action.spot.id - 1] = action.spot;
+            for(let i = 0; i < allSpots.length; i++) {
+                let spot = allSpots[i];
+                if(spot.id === action.spot.id) {
+                    allSpots[i] = action.spot
+                }
+            }
             objSpots[action.spot.id] = action.spot;
 
             return {
