@@ -1,15 +1,22 @@
-// import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { Link } from 'react-router-dom';
 import './FavoriteShow.css';
 // import * as favActions from '../../store/favorite';
 import { useSelector } from "react-redux";
 
 
+
 function FavoritesShow({ favData }) {
     // const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user.id);
     const spots = useSelector(state => state.spot.objSpots);
-    favData.filter((fav) => fav.userId === userId);
+    const [myFav, setMyFav] = useState([]);
+    // favData.filter((fav) => fav.userId === userId);
+    useEffect(() => {
+        let filterData = favData.filter((fav) => fav.userId === userId);
+        setMyFav(filterData)
+
+    }, []);
 
     return (
         <div className="fav-show-container">
@@ -20,7 +27,7 @@ function FavoritesShow({ favData }) {
             </div>
 
             <div className="all-fav-spots-container">
-                {(favData || []).map((favSpot) => (
+                {(myFav || []).map((favSpot) => (
                     <div className="favSpot-container" key={favSpot.id}>
                         <h4>{spots[favSpot.spotId].name}</h4>
                         <Link to={`/spots/${favSpot.spotId}`}>
