@@ -4,8 +4,6 @@ import './FavoriteShow.css';
 // import * as favActions from '../../store/favorite';
 import { useSelector } from "react-redux";
 
-
-
 function FavoritesShow({ favData }) {
     // const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user.id);
@@ -17,6 +15,11 @@ function FavoritesShow({ favData }) {
         setMyFav(filterData)
 
     }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
 
     return (
         <div className="fav-show-container">

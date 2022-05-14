@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
@@ -14,6 +14,11 @@ function LoginFormPage() {
     if (sessionUser) return (
       <Redirect to="/" />
     );
+
+    useEffect(() => {
+      window.scrollTo(0, 0)
+  }, [])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -26,6 +26,10 @@ function SpotDetails() {
         userId = sessionUser.id;
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     let favId;
         for(let i = 0; i < favs.length; i++) {
             let fav = favs[i];

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
@@ -27,6 +27,10 @@ function SpotFormPage() {
     const [moreImgsButton, setMoreImgsButton] = useState(true);
 
     const userId = useSelector(state => state.session.user.id);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
