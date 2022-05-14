@@ -2,6 +2,8 @@
     height: 250px;
     width: 100%;
     border-radius: 15px;
+    object-fit: cover;
+
 }
 
 .favSpot-container {

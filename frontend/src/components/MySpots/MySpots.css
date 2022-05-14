@@ -2,6 +2,7 @@
     width: 400px;
     height: 250px;
     border-radius: 15px;
+    object-fit: cover;
 
 }
 

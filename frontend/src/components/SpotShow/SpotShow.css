@@ -4,6 +4,8 @@
     height: 250px;
     margin: 10px;
     border-radius: 15px;
+    object-fit: cover;
+
 }
 
 .spot-showpage-img-container {

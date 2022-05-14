@@ -28,7 +28,7 @@ function SpotImages({ spot, user }) {
         <div className="images-comp-container">
             {imageCount === 1 ?
                 <div className="one-images-container">
-                    <img src={imageOne} className="main-photoshow" alt="show-one-pic"/>
+                    <img onError={(event) => event.target.style.display = 'none'}src={imageOne} className="main-photoshow" alt="show-one-pic"/>
                 </div>
             : null
 
@@ -43,7 +43,7 @@ function SpotImages({ spot, user }) {
 
                     <div className="two-images-second-container">
                         {
-                            sideImageArr.map((sImg, i) => (<img key={i} src={sImg} className="small-photo-show-two" alt="show-two-pics"/>))
+                            sideImageArr.map((sImg, i) => (<img onError={(event) => event.target.style.display = 'none'}key={i} src={sImg} className="small-photo-show-two" onerror="this.style.display='none'"alt="show-two-pics"/>))
                         }
                     </div>
                 </div>
@@ -59,7 +59,7 @@ function SpotImages({ spot, user }) {
 
                     <div className="remaining-photos-container">
                         {
-                            sideImageArr.map((sImg, i) => (<img key={i} src={sImg} className="small-photo-show" alt="show-three-pics"/>))
+                            sideImageArr.map((sImg, i) => (<img onError={(event) => event.target.style.display = 'none'}key={i} src={sImg} className="small-photo-show" alt="show-three-pics"/>))
                         }
                     </div>
                 </div>
@@ -74,7 +74,7 @@ function SpotImages({ spot, user }) {
                     </div>
                     <div className="remaining-photos-container">
                         {
-                            sideImageArr.map((sImg, i) => (<img key={i} src={sImg} className="small-photo-show" alt="show-four-pics"/>))
+                            sideImageArr.map((sImg, i) => (<img onError={(event) => event.target.style.display = 'none'} key={i} src={sImg} className="small-photo-show" alt="show-four-pics"/>))
                         }
 
                     </div>
