@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
           <p className="user-info-title">Welcome, {user.username}</p>
           <p className="user-info-title">email: {user.email}</p>
           <div className="logout-btn-container">
-              <button onClick={logout}>Log Out</button>
+              <button style={{cursor: 'pointer'}}onClick={logout}>Log Out</button>
           </div>
         </div>
       )}

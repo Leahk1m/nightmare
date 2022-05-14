@@ -30,6 +30,7 @@
     background-color: #E31C5F;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .signup-title {

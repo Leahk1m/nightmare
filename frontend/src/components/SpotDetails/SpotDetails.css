@@ -76,6 +76,7 @@
     text-align:center;
     transition: all 0.2s;
     margin-bottom: 13px;
+    cursor:pointer;
 }
 
 .create-spot-btn:hover {
@@ -131,6 +132,7 @@
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 .spot-detail-fav-btn:hover {
     color: #ff385c;
@@ -154,6 +156,7 @@
     padding-right: 10px;
     border-radius: 10px;
     transition: all 0.2s;
+    cursor: pointer;
 }
 .spot-detail-unfav-btn:hover {
     color: #8a8a8a;
