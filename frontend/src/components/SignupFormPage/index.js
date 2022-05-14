@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -12,6 +12,10 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -70,8 +74,8 @@ function SignupFormPage() {
 
       <button className="signup-btn" type="submit">Sign Up</button>
 
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      <ul style={{listStyle: "none"}}>
+        {errors.map((error, idx) => <li className="error-msg" key={idx}>{error}</li>)}
       </ul>
     </form>
   );

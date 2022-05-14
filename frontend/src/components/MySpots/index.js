@@ -1,10 +1,17 @@
+import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import './MySpots.css';
+
 function MySpots({ spotsData }) {
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
     const myOwnSpots = spotsData.filter((place) => place.userId === userId);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    
     return(
         <div className="my-spots-page-container">
             <span className="my-spots-pg-title-container">

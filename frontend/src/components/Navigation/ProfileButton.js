@@ -41,7 +41,8 @@ function ProfileButton({ user }) {
       <div className="home-ghost-btn">
         <p className="ghost-btn-title">click me</p>
         <button onClick={openMenu}>
-          <i className="fa-solid fa-ghost"></i>
+          <img className="prof-btn-ghost-gif"src="https://data.whicdn.com/images/100722526/original.gif" alt="prof-btn-ghost-gif"/>
+          {/* <i className="fa-solid fa-ghost"></i> */}
         </button>
       </div>
       {showMenu && (
