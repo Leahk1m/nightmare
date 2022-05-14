@@ -156,8 +156,8 @@ function SpotFormPage() {
                 <button className="create-spot-btn" type="submit">Create Spot</button>
 
 
-                <ul>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                <ul style={{listStyle: "none"}}>
+                    {errors.map((error, idx) => <li className="error-msg" key={idx}>{error}</li>)}
                 </ul>
             </form>
 

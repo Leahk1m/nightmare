@@ -74,8 +74,8 @@ function SignupFormPage() {
 
       <button className="signup-btn" type="submit">Sign Up</button>
 
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      <ul style={{listStyle: "none"}}>
+        {errors.map((error, idx) => <li className="error-msg" key={idx}>{error}</li>)}
       </ul>
     </form>
   );

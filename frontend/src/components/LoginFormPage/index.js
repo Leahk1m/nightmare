@@ -11,14 +11,13 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
     if (sessionUser) return (
       <Redirect to="/" />
     );
-
-    useEffect(() => {
-      window.scrollTo(0, 0)
-  }, [])
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,8 +68,8 @@ function LoginFormPage() {
       <br/>
       <button className="login-btn" onClick={demoSubmit}>Demo Log In</button>
 
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      <ul style={{listStyle: "none"}}>
+        {errors.map((error, idx) => <li className="error-msg" key={idx}>{error}</li>)}
       </ul>
 
     </form>
