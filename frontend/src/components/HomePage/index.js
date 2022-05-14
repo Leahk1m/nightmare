@@ -65,7 +65,7 @@ const HomePage = () => {
 
                 <div className="welcome-to-nightmare-desc">
                     <h1>BOO!</h1>
-                    <h3>Welcome to Nightmarebnb, we hope you find
+                    <h3>Welcome to Nightmarebnb! We hope you find
                         <br/> the scariest spots for your spooky needs.</h3>
                     <h4>Let us guide you to all of our ghost-friendly stays.
                         <br/>Click on us (the ghosts) to explore all of our available haunted listings.</h4>
