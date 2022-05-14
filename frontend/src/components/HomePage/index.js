@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
+import { FaGithub } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
+
 const HomePage = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -66,11 +69,22 @@ const HomePage = () => {
                         <br/> the scariest spots for your spooky needs.</h3>
                     <h4>Let us guide you to all of our ghost-friendly stays.
                         <br/>Click on us (the ghosts) to explore all of our available haunted listings.</h4>
+                        <div className="footer-div">
 
+                    <div className="discover-div">
+                        <a className="portfolio-link-footer"target="_blank" href="http://www.leahkim.net/">Creator Portfolio</a>
+                        <div className="github-div">
+                            <FaGithub className="github-logo"/><a target="_blank"className="github-link"href='https://github.com/Leahk1m'>Github</a>
+                        </div>
+
+                        <div className="linked-in-div">
+                            <FaLinkedin className="linked-in-logo" /><a target="_blank"className="linkedin-link"href='https://www.linkedin.com/in/leahk1m'>Linkedin</a>
+                        </div>
+                    </div>
+
+                    </div>
                 </div>
             </div>
-
-
         </div>
     );
 };
