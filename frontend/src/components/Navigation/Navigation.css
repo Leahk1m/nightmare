@@ -8,6 +8,8 @@
     border: 1px solid rgb(240, 237, 237);
     box-shadow: 1px 1px 5px #ededed;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
 
 }
 
@@ -24,6 +26,7 @@
     width: 10%;
     align-content: space-between;
     justify-content: space-evenly;
+
 }
 
 .logo-home {
@@ -153,3 +156,5 @@
     background-color:#FFFFFF;
     border: 0.1em solid #ff385c;
 }
+
+

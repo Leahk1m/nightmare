@@ -4,11 +4,8 @@ import './PlzLogIn.css';
 function PlzLogIn() {
     return(
         <div className="plz-login-container">
-            <Link to="/login">
-                <img className="dancing-pumpkin-man-gif" src="https://thumbs.gfycat.com/YoungNeatBarebirdbat-max-1mb.gif" alt="dancing-pumpkin-man"/>
-            </Link>
-            <h1>You must be logged in to access this feature</h1>
-            <h2>Click on my pumpkin head to go to the login page</h2>
+            <h1 className="pls-login-p">You must be logged in to access this feature</h1>
+            <h2 className="pls-login-p">Please <Link className="pls-login-link"to="/login">Log in</Link> or <Link className="pls-login-link" to="/signup">Sign up</Link> to join the fun!</h2>
 
         </div>
     );
